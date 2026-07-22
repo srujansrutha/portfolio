@@ -214,6 +214,11 @@ PROFILE_DATA = {
     ]
 }
 
+try:
+    from pydantic import EmailStr
+except ImportError:
+    EmailStr = str  # Fallback to standard string if email-validator is not installed
+
 # Pydantic Schemas
 class ContactMessage(BaseModel):
     name: str
