@@ -3,148 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>srujan.ai — J Srujan Vishwakarma | AI & ML Engineer</title>
+    <title>{{ profile.name }} | AI & ML Engineer Portfolio</title>
     <meta name="description" content="{{ profile.summary }}">
     <meta name="keywords" content="AI Engineer, ML Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, Bengaluru">
     <meta name="author" content="{{ profile.name }}">
 
     <!-- Open Graph / Social -->
-    <meta property="og:title" content="srujan.ai - J Srujan Vishwakarma | AI Engineer">
+    <meta property="og:title" content="{{ profile.name }} - 3D AI Engineer Portfolio">
     <meta property="og:description" content="AI & ML Engineer specializing in Generative AI, Multi-Agent RAG systems, Vision-Language Models, and Scalable ML Pipelines.">
     <meta property="og:type" content="website">
 
     <!-- CSS & Fonts -->
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
 
-    <!-- Background Dot Grid Pattern -->
-    <div class="bg-dot-pattern"></div>
+    <!-- Quantum HUD Grid Overlay & Ambient Glowing Orbs -->
+    <div class="hud-grid-overlay"></div>
+    <div class="bg-glow-orb glow-1"></div>
+    <div class="bg-glow-orb glow-2"></div>
 
-    <!-- Award Badge Circle (Left Side) -->
-    <div class="award-badge-circle">
-        <span>BEST AI</span>
-        <span>ENGINEER</span>
-        <span style="font-size: 0.5rem; opacity: 0.8; margin-top: 2px;">2026</span>
-    </div>
+    <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+        <a href="#hero" class="navbar-brand">
+            <span class="brand-dot"></span>
+            <span>J Srujan <span style="color: var(--primary-cyan);">Vishwakarma</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#achievements" class="nav-link">Achievements</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="javascript:void(0)" onclick="document.getElementById('chat-drawer').classList.add('open')" class="nav-cta">
+            🤖 Ask AI Bot
+        </a>
+    </nav>
 
-    <!-- Top Header Bar -->
-    <header class="top-header-bar">
-        <div class="top-brand">
-            <a href="#hero" class="top-brand-name">j srujan vishwakarma.</a>
-            <span class="top-brand-sub">BUILDER • AI ENGINEER • BENGALURU</span>
-        </div>
-
-        <!-- Floating Pill Navbar -->
-        <nav class="floating-pill-nav">
-            <a href="javascript:void(0)" onclick="document.getElementById('chat-drawer').classList.add('open')" class="pill-nav-btn">
-                <span>💬</span> AI Assistant
-            </a>
-            <a href="#hero" class="pill-nav-item active">HOME</a>
-            <a href="#projects" class="pill-nav-item">WORK</a>
-            <a href="#experience" class="pill-nav-item">EXPERIENCE</a>
-            <a href="#skills" class="pill-nav-item">SKILLS</a>
-            <a href="#contact" class="pill-nav-item">CONTACT</a>
-        </nav>
-
-        <div style="pointer-events: all; font-family: var(--font-code); font-size: 0.85rem; font-weight: 700; color: var(--accent-teal); display: flex; align-items: center; gap: 6px;">
-            <span>♥</span> 4689
-        </div>
-    </header>
-
-    <!-- HERO SECTION (EXACT MATCH TO FUCH.AI) -->
-    <section id="hero" class="hero-fuch-section">
-
-        <!-- Giant Background Watermark Text -->
-        <div class="bg-giant-text">srujan.ai</div>
-
-        <!-- Central 3D Mech Robot Viewport -->
-        <div class="mech-3d-viewport">
-            <canvas id="mech-canvas"></canvas>
-        </div>
-
-        <!-- Bottom Controls & AI Terminal Prompt -->
-        <div class="hero-bottom-bar">
-            <div class="terminal-prompt-box">
-                <div style="font-family: var(--font-code); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-teal); margin-bottom: 8px;">
-                    SRUJAN.AI
+    <!-- HERO SECTION WITH 3D QUANTUM NEURAL CORE -->
+    <section id="hero" class="hero-section">
+        <div class="section-container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span> AI & ML Engineer • Available for Roles
                 </div>
-                <div class="terminal-subtitle">
-                    <span id="typing-text">i'm srujan — ai & ml engineer. ask me anything about my work.</span><span class="terminal-cursor"></span>
+                <h1 class="hero-name">
+                    Hi, I'm <br><span class="gradient-text">J Srujan</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span id="typing-text">AI & ML Engineer</span><span class="typing-cursor"></span>
+                </div>
+                <p class="hero-bio">
+                    {{ profile.summary }}
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">
+                        <span>Explore AI Projects</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="{{ profile.social.github }}" target="_blank" class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <span>GitHub Profile</span>
+                    </a>
                 </div>
 
-                <div class="prompt-chips-group">
-                    <button class="prompt-chip" data-prompt="What has Srujan built?">
-                        <span>›</span> what has he built?
-                    </button>
-                    <button class="prompt-chip" data-prompt="Tell me about his Agentic RAG application">
-                        <span>›</span> tell me about agentic rag
-                    </button>
-                    <button class="prompt-chip" data-prompt="What is Srujan's biggest technical impact?">
-                        <span>›</span> his biggest impact?
-                    </button>
-                </div>
-
-                <div class="hero-footer-note">
-                    PRESS <span style="border: 1px solid var(--text-dim); padding: 2px 6px; border-radius: 4px;">L</span> TO LIKE OR CLICK HERE
-                </div>
-            </div>
-
-            <!-- Bottom Right Jamming Card -->
-            <div class="jamming-card">
-                <div class="jamming-icon">♫</div>
-                <div>
-                    <div class="jamming-title">... LAST JAMMED TO</div>
-                    <div class="jamming-song">Generative AI & Agentic Workflows</div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- WORK / PROJECTS SECTION -->
-    <section id="projects">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Featured Work</span>
-                <h2 class="section-title">AI & ML Projects</h2>
-                <p class="section-subtitle">Real-world AI systems built with LangGraph, Vision-Language Models, PyTorch, and FastAPI.</p>
-            </div>
-
-            <div class="projects-grid">
-                {% for proj in profile.projects %}
-                <div class="project-card" data-category="{{ proj.category }}">
-                    <div>
-                        <div class="card-top">
-                            <span class="project-badge">{{ proj.badge }}</span>
-                            <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-dim);">{{ proj.period }}</span>
-                        </div>
-                        <h3 class="project-title">{{ proj.title }}</h3>
-                        <div class="project-tagline">{{ proj.tagline }}</div>
-                        <p class="project-desc">{{ proj.description }}</p>
+                <div class="hero-stats-row">
+                    {% for stat in profile.stats %}
+                    <div class="stat-card">
+                        <div class="stat-val">{{ stat.value }}<span style="font-size: 1rem;">{{ stat.suffix }}</span></div>
+                        <div class="stat-lbl">{{ stat.label }}</div>
                     </div>
-
-                    <div>
-                        <div class="tech-tags" style="margin-bottom: 20px;">
-                            {% for t in proj.tech_stack %}
-                            <span class="tech-tag">{{ t }}</span>
-                            {% endfor %}
-                        </div>
-                        <div class="project-footer">
-                            <button onclick="openProjectModal('{{ proj.id }}')" class="btn-details">
-                                <span>Architecture Details</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </button>
-                            {% if proj.github != '#' %}
-                            <a href="{{ proj.github }}" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;" title="GitHub Repository">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+            </div>
+
+            <!-- 3D WEBGL QUANTUM NEURAL ENGINE VIEWPORT -->
+            <div class="webgl-3d-wrapper" id="webgl-container">
+                <canvas id="webgl-canvas"></canvas>
+                <div class="hud-canvas-overlay">
+                    <span class="pulse-dot"></span>
+                    <span>3D Quantum Core • Move Mouse to Tilt</span>
+                </div>
             </div>
         </div>
     </section>
@@ -155,7 +96,7 @@
             <div class="section-header">
                 <span class="section-tag">Career Trajectory</span>
                 <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">Driving AI impact across TrendGully, Ellucian, and CSIR4PI (NAL).</p>
+                <p class="section-subtitle">Pioneering AI breakthroughs in Generative AI, ClickHouse analytics, and Cloud MLOps.</p>
             </div>
 
             <div class="timeline">
@@ -187,13 +128,66 @@
         </div>
     </section>
 
+    <!-- PROJECTS SECTION WITH 3D TILT PHYSICS -->
+    <section id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">AI Showcase</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Real-world AI systems built with LangGraph, Vision-Language Models, PyTorch, and FastAPI.</p>
+            </div>
+
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="GenAI">GenAI & RAG</button>
+                <button class="filter-btn" data-filter="Vision">Computer Vision & LLM</button>
+                <button class="filter-btn" data-filter="MLOps">MLOps & Cloud</button>
+            </div>
+
+            <div class="projects-grid">
+                {% for proj in profile.projects %}
+                <div class="project-card" data-category="{{ proj.category }}">
+                    <div>
+                        <div class="card-top">
+                            <span class="project-badge">{{ proj.badge }}</span>
+                            <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-dim);">{{ proj.period }}</span>
+                        </div>
+                        <h3 class="project-title">{{ proj.title }}</h3>
+                        <div class="project-tagline">{{ proj.tagline }}</div>
+                        <p class="project-desc">{{ proj.description }}</p>
+                    </div>
+
+                    <div>
+                        <div class="tech-tags" style="margin-bottom: 22px;">
+                            {% for t in proj.tech_stack %}
+                            <span class="tech-tag">{{ t }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-footer">
+                            <button onclick="openProjectModal('{{ proj.id }}')" class="btn-details">
+                                <span>Architecture Details</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                            {% if proj.github != '#' %}
+                            <a href="{{ proj.github }}" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;" title="GitHub Repository">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
     <!-- SKILLS MATRIX SECTION -->
     <section id="skills">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Technical Competencies</span>
-                <h2 class="section-title">Skills & Tech Stack</h2>
-                <p class="section-subtitle">Deep expertise in modern LLM frameworks, vector search, ClickHouse analytics, and cloud MLOps.</p>
+                <h2 class="section-title">Skills & Tech Ecosystem</h2>
+                <p class="section-subtitle">Deep expertise in modern LLM frameworks, vector databases, MLOps pipelines, and cloud architecture.</p>
             </div>
 
             <div class="skills-wrapper">
@@ -294,13 +288,13 @@
             </div>
 
             <!-- Education Box -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 28px; padding: 36px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--clay-shadow);">
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 28px; padding: 36px; backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--glass-shadow);">
                 <div>
-                    <span style="font-family: var(--font-code); color: var(--accent-teal); font-size: 0.85rem; text-transform: uppercase;">Education</span>
-                    <h3 style="font-size: 1.7rem; margin: 4px 0; color: var(--primary-dark);">{{ profile.education.institution }}</h3>
-                    <p style="color: var(--text-muted);">{{ profile.education.degree }} • <span style="color: var(--accent-teal); font-weight: 700;">CGPA: {{ profile.education.cgpa }}</span></p>
+                    <span style="font-family: var(--font-code); color: var(--primary-cyan); font-size: 0.85rem; text-transform: uppercase;">Education</span>
+                    <h3 style="font-size: 1.7rem; margin: 4px 0;">{{ profile.education.institution }}</h3>
+                    <p style="color: var(--text-muted);">{{ profile.education.degree }} • <span style="color: var(--accent-emerald); font-weight: 600;">CGPA: {{ profile.education.cgpa }}</span></p>
                 </div>
-                <div style="font-family: var(--font-code); color: var(--text-dim); background: rgba(0,0,0,0.04); padding: 10px 22px; border-radius: 14px;">
+                <div style="font-family: var(--font-code); color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 10px 22px; border-radius: 14px;">
                     {{ profile.education.period }} | Bangalore
                 </div>
             </div>
@@ -313,7 +307,7 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <span class="section-tag">Let's Connect</span>
-                    <h3>Build Next-Gen <span style="color: var(--accent-teal);">AI Systems</span></h3>
+                    <h3>Build Next-Gen <span class="gradient-text">AI Systems</span></h3>
                     <p>Open for full-time AI Engineering roles, multi-agent RAG architecture, and custom LLM solutions.</p>
 
                     <div class="contact-methods">
@@ -321,21 +315,21 @@
                             <span style="font-size: 1.3rem;">📧</span>
                             <div>
                                 <div style="font-size: 0.8rem; color: var(--text-dim);">Email Direct</div>
-                                <div style="font-weight: 700; color: var(--primary-dark);">{{ profile.email }}</div>
+                                <div style="font-weight: 600;">{{ profile.email }}</div>
                             </div>
                         </a>
                         <a href="tel:{{ profile.phone }}" class="contact-method-item">
                             <span style="font-size: 1.3rem;">📱</span>
                             <div>
                                 <div style="font-size: 0.8rem; color: var(--text-dim);">Phone</div>
-                                <div style="font-weight: 700; color: var(--primary-dark);">{{ profile.phone }}</div>
+                                <div style="font-weight: 600;">{{ profile.phone }}</div>
                             </div>
                         </a>
                         <a href="{{ profile.social.linkedin }}" target="_blank" class="contact-method-item">
                             <span style="font-size: 1.3rem;">💼</span>
                             <div>
                                 <div style="font-size: 0.8rem; color: var(--text-dim);">LinkedIn</div>
-                                <div style="font-weight: 700; color: var(--primary-dark);">j-srujan-vishwakarma</div>
+                                <div style="font-weight: 600;">j-srujan-vishwakarma</div>
                             </div>
                         </a>
                     </div>
@@ -350,9 +344,9 @@
                             <input type="email" id="form-email" placeholder="Your Email Address" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="form-message" rows="5" placeholder="Your Message or Inquiry" required></textarea>
+                            <textarea id="form-message" rows="5" placeholder="Your Project Opportunity or Inquiry" required></textarea>
                         </div>
-                        <button type="submit" class="pill-nav-btn" style="width: 100%; justify-content: center; padding: 16px; border: none; cursor: pointer; font-size: 1rem;">
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
                             <span>Send Message</span>
                         </button>
                         <div id="contact-status" style="display: none; margin-top: 14px; text-align: center;"></div>
@@ -364,8 +358,8 @@
 
     <!-- FOOTER -->
     <footer>
-        <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-            <div>© {{ profile.name }}. srujan.ai powered by FastAPI.</div>
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div>© {{ profile.name }}. 3D Quantum AI Portfolio powered by FastAPI.</div>
             <div style="display: flex; gap: 24px;">
                 <a href="{{ profile.social.github }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">GitHub</a>
                 <a href="{{ profile.social.linkedin }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">LinkedIn</a>
@@ -382,18 +376,18 @@
     <div id="chat-drawer" class="chat-drawer">
         <div class="chat-header">
             <div class="chat-header-title">
-                <span style="color: var(--accent-teal);">●</span>
-                <span>srujan's ai assistant</span>
+                <span class="pulse-dot"></span>
+                <span>Srujan's AI Assistant</span>
             </div>
             <button id="chat-close-btn" class="chat-close-btn">✕</button>
         </div>
         <div id="chat-messages" class="chat-messages">
             <div class="chat-bubble bot">
-                i'm srujan.ai — srujan's ai assistant. ask me anything about his work at TrendGully, Ellucian, Agentic RAG projects, or technical skills!
+                Greetings! I'm Srujan's AI assistant. Ask me about his experience at TrendGully/Ellucian, Agentic RAG projects, Vision-Language Models, or technical skills!
             </div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="ask me anything about his work...">
+            <input type="text" id="chat-input" placeholder="Ask about Srujan's AI projects...">
             <button id="chat-send-btn" class="chat-send-btn">➔</button>
         </div>
     </div>
