@@ -1,413 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>srujan.ai — J Srujan Vishwakarma | AI & ML Engineer</title>
-    <meta name="description" content="{{ profile.summary }}">
-    <meta name="keywords" content="AI Engineer, ML Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, Bengaluru">
-    <meta name="author" content="{{ profile.name }}">
-
-    <!-- Open Graph / Social -->
-    <meta property="og:title" content="srujan.ai - J Srujan Vishwakarma | AI Engineer">
-    <meta property="og:description" content="AI & ML Engineer specializing in Generative AI, Multi-Agent RAG systems, Vision-Language Models, and Scalable ML Pipelines.">
-    <meta property="og:type" content="website">
-
-    <!-- CSS & Fonts -->
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ profile.name }} — {{ profile.title }} · The Kumar Cut</title>
+<meta name="description" content="{{ profile.summary }}">
+<meta name="keywords" content="AI Engineer, ML Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, {{ profile.location }}">
+<meta name="author" content="{{ profile.name }}">
+<meta property="og:title" content="{{ profile.name }} — {{ profile.title }}">
+<meta property="og:description" content="{{ profile.specialization }}">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
 </head>
 <body>
 
-    <!-- Background Dot Grid Pattern -->
-    <div class="bg-dot-pattern"></div>
+<div data-scrub="true" style="position:fixed;top:0;left:0;height:3px;width:0;background:#FF2E3A;z-index:950;box-shadow:0 0 10px rgba(255,46,58,0.7);pointer-events:none;"></div>
+<div data-cut="true" style="position:fixed;inset:0;z-index:1400;pointer-events:none;opacity:0;background:#050506;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity 0.16s ease;">
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.05) 0 2px,transparent 2px 4px);opacity:0.5;"></div>
+  <div style="position:absolute;top:0;left:0;height:3px;width:0;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;" data-cut-bar="true"></div>
+  <div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:3px;color:#FF2E3A;position:relative;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 12px #FF2E3A;animation:pfblink 0.5s infinite;"></span>CUT TO</div>
+  <div data-cut-label="true" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,58px);text-transform:uppercase;color:#F3F6FB;letter-spacing:-0.02em;position:relative;text-shadow:2px 0 rgba(22,210,224,0.4),-2px 0 rgba(255,46,58,0.45);">SCENE</div>
+</div>
+<div style="position:fixed;top:0;left:0;width:100%;height:100px;background:linear-gradient(180deg,#000 32%,rgba(0,0,0,0) 100%);z-index:860;pointer-events:none;"></div>
+<div style="position:fixed;bottom:0;left:0;width:100%;height:100px;background:linear-gradient(0deg,#000 32%,rgba(0,0,0,0) 100%);z-index:860;pointer-events:none;"></div>
+<div style="position:fixed;inset:0;z-index:856;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0.3) 0px,rgba(0,0,0,0.3) 1px,transparent 1px,transparent 3px);opacity:0.5;"></div>
+<div data-grain="true" class="vhs-grain"></div>
+<div style="position:fixed;left:0;top:-20%;width:100%;height:130px;z-index:858;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.05),transparent);animation:vhsband 7s linear infinite;"></div>
+<div style="position:fixed;inset:0;z-index:854;pointer-events:none;background:radial-gradient(120% 95% at 50% 50%, transparent 44%, rgba(0,0,0,0.6) 100%);"></div>
 
-    <!-- Award Badge Circle (Left Side) -->
-    <div class="award-badge-circle">
-        <span>BEST AI</span>
-        <span>ENGINEER</span>
-        <span style="font-size: 0.5rem; opacity: 0.8; margin-top: 2px;">2026</span>
+<nav data-nav="true" style="position:fixed;top:0;left:0;width:100%;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:16px 40px;transition:background 0.3s,border-color 0.3s,backdrop-filter 0.3s;border-bottom:1px solid transparent;">
+  <a href="#hero" style="display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDEFF2;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;animation:pfblink 1.1s infinite;"></span>srujan<span style="color:#FF2E3A;">.ai</span></a>
+  <div style="display:flex;align-items:center;gap:2px;background:rgba(11,11,13,0.6);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(14px);padding:5px 6px;">
+    <a href="#work" data-navlink="work" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">01·WORK</a>
+    <a href="#experience" data-navlink="experience" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">02·RECORD</a>
+    <a href="#skills" data-navlink="skills" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">03·TOOLKIT</a>
+    <a href="#contact" data-navlink="contact" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">04·CONTACT</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button data-open-palette="true" style="display:flex;align-items:center;gap:8px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:8px 12px;">SCENE SELECT <span style="border:1px solid rgba(255,255,255,0.22);padding:1px 6px;color:#EDEFF2;">⌘K</span></button>
+    <button data-open-chat="true" data-magnetic="true" style="cursor:pointer;background:#FF2E3A;color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:1px;border:none;padding:9px 16px;">● COMMS</button>
+  </div>
+</nav>
+
+<section id="hero" style="position:relative;min-height:100vh;overflow:hidden;background:#000;">
+  <video id="hero-video" src="/static/Rbthy.mp4" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;filter:brightness(0.8) contrast(1.5) saturate(0.6);"></video>
+  <div style="position:absolute;inset:0;background:radial-gradient(90% 85% at 50% 42%, transparent 16%, rgba(0,0,0,0.9) 100%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.42) 45%, rgba(0,0,0,0.72) 78%, rgba(0,0,0,0.97) 100%);pointer-events:none;"></div>
+
+  <div style="position:absolute;top:96px;left:44px;z-index:4;display:flex;flex-direction:column;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#FF2E3A;">
+    <div style="display:flex;align-items:center;gap:9px;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 12px #FF2E3A;animation:pfblink 1s infinite;"></span>● REC · SP</div>
+    <div style="color:#8a92a0;font-size:11px;letter-spacing:2px;">▶ PLAY ▮▮</div>
+  </div>
+  <div style="position:absolute;top:96px;right:44px;z-index:4;text-align:right;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:2px;color:#EDEFF2;"><div data-timecode="true">00:00:00:00</div><div style="color:#8a92a0;font-size:11px;margin-top:6px;">ELAPSED · REC</div></div>
+
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 28px;z-index:3;gap:24px;">
+    <div data-reveal="true" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#FF2E3A;">J Srujan Vishwakarma · AI Engineer</div>
+    <h1 data-reveal="true" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6.6vw,78px);line-height:0.92;font-weight:700;letter-spacing:-0.03em;text-transform:uppercase;margin:0;color:#F5F8FC;max-width:15ch;text-shadow:3px 0 rgba(22,210,224,0.4),-3px 0 rgba(255,46,58,0.45),0 6px 44px rgba(0,0,0,0.92);">I build the AI systems everyone else <span style="color:#FF2E3A;">is afraid to.</span></h1>
+    <div data-reveal="true" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <a href="#work" data-magnetic="true" style="display:inline-flex;align-items:center;gap:9px;background:#FF2E3A;color:#fff;font-weight:700;font-size:14px;padding:14px 24px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;">▶ ROLL THE REEL</a>
+      <button data-open-chat="true" data-magnetic="true" style="cursor:pointer;display:inline-flex;align-items:center;gap:9px;color:#EDEFF2;font-size:14px;padding:14px 24px;border:1px solid rgba(255,255,255,0.24);background:rgba(0,0,0,0.35);font-family:'JetBrains Mono',monospace;letter-spacing:1px;font-weight:700;">● OPEN COMMS</button>
     </div>
+  </div>
 
-    <!-- Top Header Bar -->
-    <header class="top-header-bar">
-        <div class="top-brand">
-            <a href="#hero" class="top-brand-name">j srujan vishwakarma.</a>
-            <span class="top-brand-sub">BUILDER • AI ENGINEER • BENGALURU</span>
-        </div>
+  <div style="position:absolute;left:44px;bottom:38px;z-index:4;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#8a92a0;">THE KUMAR CUT · srujan.ai</div>
+  <div style="position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:4;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;">SCROLL ↓</div>
+</section>
 
-        <!-- Floating Pill Navbar -->
-        <nav class="floating-pill-nav">
-            <a href="javascript:void(0)" onclick="document.getElementById('chat-drawer').classList.add('open')" class="pill-nav-btn">
-                <span>💬</span> AI Assistant
-            </a>
-            <a href="#hero" class="pill-nav-item active">HOME</a>
-            <a href="#projects" class="pill-nav-item">WORK</a>
-            <a href="#experience" class="pill-nav-item">EXPERIENCE</a>
-            <a href="#skills" class="pill-nav-item">SKILLS</a>
-            <a href="#contact" class="pill-nav-item">CONTACT</a>
-        </nav>
+<div style="overflow:hidden;border-top:1px solid rgba(255,46,58,0.25);border-bottom:1px solid rgba(255,46,58,0.25);background:#050506;padding:16px 0;white-space:nowrap;">
+  <div style="display:inline-flex;animation:marq 26s linear infinite;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,44px);text-transform:uppercase;">
+    <span style="padding-right:34px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.26);">Generative AI ✦ Multi-Agent RAG ✦ Vision-Language Models ✦ Cloud MLOps ✦ LangGraph ✦ ClickHouse ✦&nbsp;</span>
+    <span aria-hidden="true" style="padding-right:34px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.26);">Generative AI ✦ Multi-Agent RAG ✦ Vision-Language Models ✦ Cloud MLOps ✦ LangGraph ✦ ClickHouse ✦&nbsp;</span>
+  </div>
+</div>
 
-        <div style="pointer-events: all; font-family: var(--font-code); font-size: 0.85rem; font-weight: 700; color: var(--accent-teal); display: flex; align-items: center; gap: 6px;">
-            <span>♥</span> 4689
-        </div>
-    </header>
-
-    <!-- HERO SECTION (FUCH.AI STYLE WITH 3D MECH) -->
-    <section id="hero" class="hero-fuch-section">
-
-        <!-- Giant Background Watermark Text (Subtle Watermark) -->
-        <div class="bg-giant-text">srujan.ai</div>
-
-        <div class="hero-fuch-grid">
-            <div class="terminal-prompt-box">
-                <div style="font-family: var(--font-code); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-teal); margin-bottom: 12px; font-weight: 700;">
-                    SRUJAN.AI • AI ENGINEER
-                </div>
-                <div class="terminal-subtitle">
-                    <span id="typing-text">i'm srujan — ai & ml engineer. ask me anything about my work.</span><span class="terminal-cursor"></span>
-                </div>
-
-                <div class="prompt-chips-group">
-                    <button class="prompt-chip" data-prompt="What has Srujan built?">
-                        <span>›</span> what has he built?
-                    </button>
-                    <button class="prompt-chip" data-prompt="Tell me about his Agentic RAG application">
-                        <span>›</span> tell me about agentic rag
-                    </button>
-                    <button class="prompt-chip" data-prompt="What is Srujan's biggest technical impact?">
-                        <span>›</span> his biggest impact?
-                    </button>
-                </div>
-
-                <div class="hero-footer-note">
-                    PRESS <span style="border: 1px solid var(--text-dim); padding: 2px 6px; border-radius: 4px; color: var(--primary-dark);">L</span> TO LIKE OR CLICK HERE
-                </div>
-            </div>
-
-            <!-- Central 3D Mech Robot & Jamming Card -->
-            <div class="mech-right-wrapper">
-                <div class="mech-3d-viewport">
-                    <canvas id="mech-canvas"></canvas>
-                </div>
-
-                <div class="jamming-card">
-                    <div class="jamming-icon">♫</div>
-                    <div>
-                        <div class="jamming-title">... LAST JAMMED TO</div>
-                        <div class="jamming-song">Generative AI & Agentic Workflows</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- WORK / PROJECTS SECTION -->
-    <section id="projects">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Featured Work</span>
-                <h2 class="section-title">AI & ML Projects</h2>
-                <p class="section-subtitle">Real-world AI systems built with LangGraph, Vision-Language Models, PyTorch, and FastAPI.</p>
-            </div>
-
-            <div class="projects-grid">
-                {% for proj in profile.projects %}
-                <div class="project-card" data-category="{{ proj.category }}">
-                    <div>
-                        <div class="card-top">
-                            <span class="project-badge">{{ proj.badge }}</span>
-                            <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-dim);">{{ proj.period }}</span>
-                        </div>
-                        <h3 class="project-title">{{ proj.title }}</h3>
-                        <div class="project-tagline">{{ proj.tagline }}</div>
-                        <p class="project-desc">{{ proj.description }}</p>
-                    </div>
-
-                    <div>
-                        <div class="tech-tags" style="margin-bottom: 20px;">
-                            {% for t in proj.tech_stack %}
-                            <span class="tech-tag">{{ t }}</span>
-                            {% endfor %}
-                        </div>
-                        <div class="project-footer">
-                            <button onclick="openProjectModal('{{ proj.id }}')" class="btn-details">
-                                <span>Architecture Details</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </button>
-                            {% if proj.github != '#' %}
-                            <a href="{{ proj.github }}" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;" title="GitHub Repository">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Career Trajectory</span>
-                <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">Driving AI impact across TrendGully, Ellucian, and CSIR4PI (NAL).</p>
-            </div>
-
-            <div class="timeline">
-                {% for exp in profile.experience %}
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-meta">
-                            <div>
-                                <h3 class="company-name">{{ exp.company }} <span style="font-weight:400; color: var(--text-muted); font-size: 1.05rem;">• {{ exp.location }}</span></h3>
-                                <span class="role-badge">{{ exp.role }}</span>
-                            </div>
-                            <span class="timeline-period">{{ exp.period }}</span>
-                        </div>
-                        <ul class="timeline-list">
-                            {% for item in exp.highlights %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
-                        </ul>
-                        <div class="tech-tags">
-                            {% for tag in exp.tech_tags %}
-                            <span class="tech-tag">{{ tag }}</span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS MATRIX SECTION -->
-    <section id="skills">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Technical Competencies</span>
-                <h2 class="section-title">Skills & Tech Stack</h2>
-                <p class="section-subtitle">Deep expertise in modern LLM frameworks, vector search, ClickHouse analytics, and cloud MLOps.</p>
-            </div>
-
-            <div class="skills-wrapper">
-                <div class="skill-category-card">
-                    <div class="category-header">
-                        <div class="category-icon">🧠</div>
-                        <h3>Generative AI & LLMs</h3>
-                    </div>
-                    <div class="skills-pills">
-                        {% for item in profile.skills.generative_ai %}
-                        <span class="skill-pill">{{ item }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="skill-category-card">
-                    <div class="category-header">
-                        <div class="category-icon">⚡</div>
-                        <h3>AI / ML Frameworks</h3>
-                    </div>
-                    <div class="skills-pills">
-                        {% for item in profile.skills.ai_ml %}
-                        <span class="skill-pill">{{ item }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="skill-category-card">
-                    <div class="category-header">
-                        <div class="category-icon">☁️</div>
-                        <h3>Cloud MLOps & Pipelines</h3>
-                    </div>
-                    <div class="skills-pills">
-                        {% for item in profile.skills.cloud_mlops %}
-                        <span class="skill-pill">{{ item }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="skill-category-card">
-                    <div class="category-header">
-                        <div class="category-icon">🗄️</div>
-                        <h3>Databases & Vector Search</h3>
-                    </div>
-                    <div class="skills-pills">
-                        {% for item in profile.skills.databases %}
-                        <span class="skill-pill">{{ item }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="skill-category-card">
-                    <div class="category-header">
-                        <div class="category-icon">💻</div>
-                        <h3>Languages</h3>
-                    </div>
-                    <div class="skills-pills">
-                        {% for item in profile.skills.languages %}
-                        <span class="skill-pill">{{ item }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="skill-category-card">
-                    <div class="category-header">
-                        <div class="category-icon">🛠️</div>
-                        <h3>Developer Tools</h3>
-                    </div>
-                    <div class="skills-pills">
-                        {% for item in profile.skills.tools %}
-                        <span class="skill-pill">{{ item }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACHIEVEMENTS & EDUCATION -->
-    <section id="achievements">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Recognitions</span>
-                <h2 class="section-title">Achievements & Education</h2>
-                <p class="section-subtitle">Academic excellence (9.03 CGPA), hackathon victories, and community leadership.</p>
-            </div>
-
-            <div class="achievements-grid" style="margin-bottom: 50px;">
-                {% for ach in profile.achievements_and_certifications %}
-                <div class="achievement-card">
-                    <div class="achievement-icon">🏆</div>
-                    <div>
-                        <div class="achievement-title">{{ ach.title }}</div>
-                        <div class="achievement-issuer">{{ ach.issuer }}</div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-
-            <!-- Education Box -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 28px; padding: 36px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--clay-shadow);">
-                <div>
-                    <span style="font-family: var(--font-code); color: var(--accent-teal); font-size: 0.85rem; text-transform: uppercase;">Education</span>
-                    <h3 style="font-size: 1.7rem; margin: 4px 0; color: var(--primary-dark);">{{ profile.education.institution }}</h3>
-                    <p style="color: var(--text-muted);">{{ profile.education.degree }} • <span style="color: var(--accent-teal); font-weight: 700;">CGPA: {{ profile.education.cgpa }}</span></p>
-                </div>
-                <div style="font-family: var(--font-code); color: var(--text-dim); background: rgba(0,0,0,0.04); padding: 10px 22px; border-radius: 14px;">
-                    {{ profile.education.period }} | Bangalore
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <div class="section-container">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <span class="section-tag">Let's Connect</span>
-                    <h3>Build Next-Gen <span style="color: var(--accent-teal);">AI Systems</span></h3>
-                    <p>Open for full-time AI Engineering roles, multi-agent RAG architecture, and custom LLM solutions.</p>
-
-                    <div class="contact-methods">
-                        <a href="mailto:{{ profile.email }}" class="contact-method-item">
-                            <span style="font-size: 1.3rem;">📧</span>
-                            <div>
-                                <div style="font-size: 0.8rem; color: var(--text-dim);">Email Direct</div>
-                                <div style="font-weight: 700; color: var(--primary-dark);">{{ profile.email }}</div>
-                            </div>
-                        </a>
-                        <a href="tel:{{ profile.phone }}" class="contact-method-item">
-                            <span style="font-size: 1.3rem;">📱</span>
-                            <div>
-                                <div style="font-size: 0.8rem; color: var(--text-dim);">Phone</div>
-                                <div style="font-weight: 700; color: var(--primary-dark);">{{ profile.phone }}</div>
-                            </div>
-                        </a>
-                        <a href="{{ profile.social.linkedin }}" target="_blank" class="contact-method-item">
-                            <span style="font-size: 1.3rem;">💼</span>
-                            <div>
-                                <div style="font-size: 0.8rem; color: var(--text-dim);">LinkedIn</div>
-                                <div style="font-weight: 700; color: var(--primary-dark);">j-srujan-vishwakarma</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="form-name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="form-email" placeholder="Your Email Address" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="form-message" rows="5" placeholder="Your Message or Inquiry" required></textarea>
-                        </div>
-                        <button type="submit" class="pill-nav-btn" style="width: 100%; justify-content: center; padding: 16px; border: none; cursor: pointer; font-size: 1rem;">
-                            <span>Send Message</span>
-                        </button>
-                        <div id="contact-status" style="display: none; margin-top: 14px; text-align: center;"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-            <div>© {{ profile.name }}. srujan.ai powered by FastAPI.</div>
-            <div style="display: flex; gap: 24px;">
-                <a href="{{ profile.social.github }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">GitHub</a>
-                <a href="{{ profile.social.linkedin }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">LinkedIn</a>
-                <a href="{{ profile.social.youtube }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">YouTube</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- AI CHATBOT DRAWER -->
-    <button id="chat-widget-btn" class="chat-widget-btn" title="Chat with Srujan's AI Assistant">
-        🤖
-    </button>
-
-    <div id="chat-drawer" class="chat-drawer">
-        <div class="chat-header">
-            <div class="chat-header-title">
-                <span style="color: var(--accent-teal);">●</span>
-                <span>srujan's ai assistant</span>
-            </div>
-            <button id="chat-close-btn" class="chat-close-btn">✕</button>
-        </div>
-        <div id="chat-messages" class="chat-messages">
-            <div class="chat-bubble bot">
-                i'm srujan.ai — srujan's ai assistant. ask me anything about his work at TrendGully, Ellucian, Agentic RAG projects, or technical skills!
-            </div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="ask me anything about his work...">
-            <button id="chat-send-btn" class="chat-send-btn">➔</button>
-        </div>
+<section style="border-bottom:1px solid rgba(255,46,58,0.25);background:#050506;">
+  <div data-reveal="true" style="max-width:1200px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;padding:16px 30px 2px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#FF2E3A;"><span style="width:8px;height:8px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;animation:pfblink 1s infinite;"></span>SUBJECT STATS · READ-ONLY</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);">
+      <div style="padding:26px 30px 32px;border-right:1px solid rgba(255,255,255,0.07);"><div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:700;color:#FF2E3A;line-height:1;letter-spacing:-0.02em;"><span data-count="true" data-target="9.03" data-decimals="2">0</span><span style="font-size:22px;color:#5b6576;">/10</span></div><div style="font-size:12px;color:#8A93A3;font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:12px;">B.E. CGPA</div></div>
+      <div style="padding:26px 30px 32px;border-right:1px solid rgba(255,255,255,0.07);"><div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:700;color:#FF2E3A;line-height:1;letter-spacing:-0.02em;"><span data-count="true" data-target="98">0</span><span style="font-size:22px;color:#5b6576;">%</span></div><div style="font-size:12px;color:#8A93A3;font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:12px;">VLM ACCURACY</div></div>
+      <div style="padding:26px 30px 32px;border-right:1px solid rgba(255,255,255,0.07);"><div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:700;color:#FF2E3A;line-height:1;letter-spacing:-0.02em;"><span data-count="true" data-target="20">0</span><span style="font-size:22px;color:#5b6576;">%</span></div><div style="font-size:12px;color:#8A93A3;font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:12px;">AWS COST CUT</div></div>
+      <div style="padding:26px 30px 32px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:700;color:#FF2E3A;line-height:1;letter-spacing:-0.02em;"><span data-count="true" data-target="3">0</span><span style="font-size:22px;color:#5b6576;">K+</span></div><div style="font-size:12px;color:#8A93A3;font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:12px;">YOUTUBE COMMUNITY</div></div>
     </div>
+  </div>
+</section>
 
-    <!-- PROJECT MODAL OVERLAY -->
-    <div id="project-modal" class="modal-overlay">
-        <div class="modal-box">
-            <button onclick="closeModal()" class="modal-close">✕</button>
-            <div id="modal-body-content"></div>
-        </div>
+<section id="work" style="padding:110px 40px;background:#050506;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="true" style="margin-bottom:52px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#FF2E3A;background:#0b0b0d;border:1px solid rgba(255,46,58,0.4);padding:8px 13px;">SCENE 01</span><div style="flex:1;min-width:80px;height:13px;background:repeating-linear-gradient(45deg,#0f0f10 0 9px,#d9d9d9 9px 18px);opacity:0.5;"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#6a7280;">TC 00:04:12 · TAKE 01</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,60px);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;margin:0 0 12px;color:#F3F6FB;">The Work.</h2>
+      <p style="max-width:600px;color:#8A93A3;font-size:15.5px;line-height:1.6;margin:0;">Four AI systems shipped to production. Open any file for the architecture.</p>
     </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px;">
+      <div data-reveal="true" data-tilt="true" data-project="agentic-rag" style="cursor:pointer;position:relative;overflow:hidden;background:#0b0b0d;border:1px solid rgba(255,46,58,0.22);display:flex;flex-direction:column;transition:border-color 0.3s;">
+        <div style="position:relative;height:118px;background:#060607;border-bottom:1px solid rgba(255,46,58,0.3);overflow:hidden;"><div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.045) 0 2px,transparent 2px 5px);"></div><div style="position:absolute;top:10px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;">STILL 01 · NO SIGNAL</div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:rgba(255,46,58,0.7);font-size:20px;">▶</div><div style="position:absolute;right:14px;bottom:2px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,46,58,0.4);">01</div></div>
+        <div style="padding:24px 26px;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;padding:4px 10px;background:rgba(255,46,58,0.12);color:#FF6B5E;border:1px solid rgba(255,46,58,0.3);">FEATURED</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5b6576;">2024–2025</span></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0 0 6px;color:#F3F6FB;">Agentic RAG Application</h3>
+          <div style="color:#FF2E3A;font-size:12.5px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">LangGraph · Qdrant · FastAPI</div>
+          <p style="color:#8A93A3;font-size:14px;line-height:1.6;margin:0 0 auto;">Low-latency retrieval with autonomous reasoning, memory orchestration and async research agents.</p>
+          <div style="display:flex;align-items:center;gap:8px;color:#EDEFF2;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:1px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">OPEN CASE FILE →</div>
+        </div>
+      </div>
+      <div data-reveal="true" data-tilt="true" data-project="wheat-detection" style="cursor:pointer;position:relative;overflow:hidden;background:#0b0b0d;border:1px solid rgba(255,46,58,0.22);display:flex;flex-direction:column;transition:border-color 0.3s;">
+        <div style="position:relative;height:118px;background:#060607;border-bottom:1px solid rgba(255,46,58,0.3);overflow:hidden;"><div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.045) 0 2px,transparent 2px 5px);"></div><div style="position:absolute;top:10px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;">STILL 02 · NO SIGNAL</div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:rgba(255,46,58,0.7);font-size:20px;">▶</div><div style="position:absolute;right:14px;bottom:2px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,46,58,0.4);">02</div></div>
+        <div style="padding:24px 26px;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;padding:4px 10px;background:rgba(255,46,58,0.12);color:#FF6B5E;border:1px solid rgba(255,46,58,0.3);">AWARD WINNING</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5b6576;">Intel AI</span></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0 0 6px;color:#F3F6FB;">Global Wheat Detection</h3>
+          <div style="color:#FF2E3A;font-size:12.5px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">YOLO · PyTorch · LLaMA</div>
+          <p style="color:#8A93A3;font-size:14px;line-height:1.6;margin:0 0 auto;">YOLO detection + a fine-tuned LLaMA advisor for real-time crop-health calls.</p>
+          <div style="display:flex;align-items:center;gap:8px;color:#EDEFF2;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:1px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">OPEN CASE FILE →</div>
+        </div>
+      </div>
+      <div data-reveal="true" data-tilt="true" data-project="mcp-fashion-analytics" style="cursor:pointer;position:relative;overflow:hidden;background:#0b0b0d;border:1px solid rgba(255,46,58,0.22);display:flex;flex-direction:column;transition:border-color 0.3s;">
+        <div style="position:relative;height:118px;background:#060607;border-bottom:1px solid rgba(255,46,58,0.3);overflow:hidden;"><div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.045) 0 2px,transparent 2px 5px);"></div><div style="position:absolute;top:10px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;">STILL 03 · NO SIGNAL</div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:rgba(255,46,58,0.7);font-size:20px;">▶</div><div style="position:absolute;right:14px;bottom:2px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,46,58,0.4);">03</div></div>
+        <div style="padding:24px 26px;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;padding:4px 10px;background:rgba(255,46,58,0.12);color:#FF6B5E;border:1px solid rgba(255,46,58,0.3);">PRODUCTION AI</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5b6576;">TrendGully</span></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0 0 6px;color:#F3F6FB;">MCP Fashion Analytics</h3>
+          <div style="color:#FF2E3A;font-size:12.5px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">MCP · ClickHouse · VLM</div>
+          <p style="color:#8A93A3;font-size:14px;line-height:1.6;margin:0 0 auto;">Query multi-million-row fashion data in plain English — over ClickHouse.</p>
+          <div style="display:flex;align-items:center;gap:8px;color:#EDEFF2;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:1px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">OPEN CASE FILE →</div>
+        </div>
+      </div>
+      <div data-reveal="true" data-tilt="true" data-project="cloud-cost-agent" style="cursor:pointer;position:relative;overflow:hidden;background:#0b0b0d;border:1px solid rgba(255,46,58,0.22);display:flex;flex-direction:column;transition:border-color 0.3s;">
+        <div style="position:relative;height:118px;background:#060607;border-bottom:1px solid rgba(255,46,58,0.3);overflow:hidden;"><div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.045) 0 2px,transparent 2px 5px);"></div><div style="position:absolute;top:10px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;">STILL 04 · NO SIGNAL</div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:rgba(255,46,58,0.7);font-size:20px;">▶</div><div style="position:absolute;right:14px;bottom:2px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,46,58,0.4);">04</div></div>
+        <div style="padding:24px 26px;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;padding:4px 10px;background:rgba(255,46,58,0.12);color:#FF6B5E;border:1px solid rgba(255,46,58,0.3);">ENTERPRISE</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5b6576;">Ellucian</span></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0 0 6px;color:#F3F6FB;">Cloud Cost Optimization Agent</h3>
+          <div style="color:#FF2E3A;font-size:12.5px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">SageMaker · Bedrock · Multi-Agent</div>
+          <p style="color:#8A93A3;font-size:14px;line-height:1.6;margin:0 0 auto;">Multi-agent SageMaker system that predicts spikes and auto-right-sizes infra.</p>
+          <div style="display:flex;align-items:center;gap:8px;color:#EDEFF2;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:1px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">OPEN CASE FILE →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Three.js Engine & Custom JS Logic -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="/static/js/main.js"></script>
+<section id="experience" style="padding:110px 40px;background:#050506;">
+  <div style="max-width:940px;margin:0 auto;">
+    <div data-reveal="true" style="margin-bottom:52px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#FF2E3A;background:#0b0b0d;border:1px solid rgba(255,46,58,0.4);padding:8px 13px;">SCENE 02</span><div style="flex:1;min-width:80px;height:13px;background:repeating-linear-gradient(45deg,#0f0f10 0 9px,#d9d9d9 9px 18px);opacity:0.5;"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#6a7280;">TC 00:08:37 · TAKE 01</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,60px);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;margin:0 0 12px;color:#F3F6FB;">The Record.</h2>
+      <p style="max-width:600px;color:#8A93A3;font-size:15.5px;line-height:1.6;margin:0;">Three roles, one throughline — research that turns into systems people use.</p>
+    </div>
+    <div style="position:relative;padding-left:52px;">
+      <div style="position:absolute;left:2px;top:0;bottom:0;width:22px;background:#0b0b0d;background-image:radial-gradient(circle at 6px 7px, rgba(255,255,255,0.55) 1.7px, transparent 2.4px), radial-gradient(circle at 16px 7px, rgba(255,255,255,0.55) 1.7px, transparent 2.4px);background-size:22px 15px;background-repeat:repeat-y;border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);"></div>
+      <div style="position:absolute;left:31px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,#FF2E3A,rgba(255,46,58,0.12));"></div>
+      <div data-reveal="true" data-exp="true" style="position:relative;margin-bottom:20px;">
+        <div style="position:absolute;left:-32px;top:24px;width:12px;height:12px;background:#FF2E3A;box-shadow:0 0 12px rgba(255,46,58,0.7);"></div>
+        <div class="exp-card" style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);border-left:2px solid #FF2E3A;padding:26px 28px;transition:border-color 0.3s,transform 0.3s;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:14px;"><div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;margin-bottom:8px;">FRAME 01</div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0;color:#F3F6FB;">TrendGully <span style="font-weight:400;color:#6b7688;font-size:14px;">· Bangalore</span></h3><div style="color:#FF2E3A;font-size:13.5px;font-weight:600;margin-top:5px;font-family:'JetBrains Mono',monospace;">Junior AI Engineer</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">Jul 2025 – Present</span><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#FF6B5E;background:rgba(255,46,58,0.12);border:1px solid rgba(255,46,58,0.3);padding:2px 9px;">● LIVE</span></div></div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;"><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Migrated fashion pipelines MongoDB → ClickHouse for scalable analytics.</li><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Fine-tuned a VLM for apparel labeling to <b style="color:#EDEFF2;">98% accuracy</b>.</li><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Shipped an MCP-powered conversational analytics chatbot.</li></ul>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">VLM</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">ClickHouse</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">MCP</span></div>
+        </div>
+      </div>
+      <div data-reveal="true" data-exp="true" style="position:relative;margin-bottom:20px;">
+        <div style="position:absolute;left:-32px;top:24px;width:12px;height:12px;background:#FF2E3A;box-shadow:0 0 12px rgba(255,46,58,0.7);"></div>
+        <div class="exp-card" style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);border-left:2px solid #FF2E3A;padding:26px 28px;transition:border-color 0.3s,transform 0.3s;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:14px;"><div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;margin-bottom:8px;">FRAME 02</div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0;color:#F3F6FB;">Ellucian <span style="font-weight:400;color:#6b7688;font-size:14px;">· Bangalore</span></h3><div style="color:#FF2E3A;font-size:13.5px;font-weight:600;margin-top:5px;font-family:'JetBrains Mono',monospace;">Cloud Intern</div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">Jan – Apr 2025</span></div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;"><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>AI cost-optimization dashboard on SageMaker — cloud spend <b style="color:#EDEFF2;">−20%</b>.</li><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Multi-agent recommendation system across AWS services.</li><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Utilization efficiency up <b style="color:#EDEFF2;">15%</b> via predictive analytics.</li></ul>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">SageMaker</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">Multi-Agent</span></div>
+        </div>
+      </div>
+      <div data-reveal="true" data-exp="true" style="position:relative;">
+        <div style="position:absolute;left:-32px;top:24px;width:12px;height:12px;background:#FF2E3A;box-shadow:0 0 12px rgba(255,46,58,0.7);"></div>
+        <div class="exp-card" style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);border-left:2px solid #FF2E3A;padding:26px 28px;transition:border-color 0.3s,transform 0.3s;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:14px;"><div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#6a7280;margin-bottom:8px;">FRAME 03</div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;margin:0;color:#F3F6FB;">CSIR4PI (NAL) <span style="font-weight:400;color:#6b7688;font-size:14px;">· Bangalore</span></h3><div style="color:#FF2E3A;font-size:13.5px;font-weight:600;margin-top:5px;font-family:'JetBrains Mono',monospace;">AI Data Science Intern</div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">Sep – Dec 2024</span></div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;"><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Rainfall prediction on 10+ years of CHIRPS climate data.</li><li style="position:relative;padding-left:20px;color:#9AA4B4;font-size:14px;line-height:1.55;"><span style="position:absolute;left:0;color:#FF2E3A;">▹</span>Preprocessing pipelines for large-scale geospatial datasets.</li></ul>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">Climate Data</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#96A0B0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:4px 10px;">Geospatial</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="overflow:hidden;border-top:1px solid rgba(255,46,58,0.25);border-bottom:1px solid rgba(255,46,58,0.25);background:#050506;padding:16px 0;white-space:nowrap;">
+  <div style="display:inline-flex;animation:marq 30s linear infinite reverse;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,44px);text-transform:uppercase;">
+    <span style="padding-right:34px;color:transparent;-webkit-text-stroke:1px rgba(255,46,58,0.45);">Let's build ✦ Ship it ✦ Available for hire ✦ srujan.ai ✦&nbsp;</span>
+    <span aria-hidden="true" style="padding-right:34px;color:transparent;-webkit-text-stroke:1px rgba(255,46,58,0.45);">Let's build ✦ Ship it ✦ Available for hire ✦ srujan.ai ✦&nbsp;</span>
+  </div>
+</div>
+
+<section id="skills" style="padding:110px 40px;background:#050506;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="true" style="margin-bottom:52px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#FF2E3A;background:#0b0b0d;border:1px solid rgba(255,46,58,0.4);padding:8px 13px;">SCENE 03</span><div style="flex:1;min-width:80px;height:13px;background:repeating-linear-gradient(45deg,#0f0f10 0 9px,#d9d9d9 9px 18px);opacity:0.5;"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#6a7280;">TC 00:11:52 · TAKE 01</span></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,60px);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;margin:0 0 12px;color:#F3F6FB;">The Toolkit.</h2>
+      <p style="max-width:600px;color:#8A93A3;font-size:15.5px;line-height:1.6;margin:0;">Levels checked. Every tool below has shipped something real.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:start;">
+      <div data-reveal="true" style="display:flex;flex-direction:column;gap:22px;">
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:#EDEFF2;">GEN AI &amp; LLMs</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF6B5E;">95</span></div><div style="height:16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);overflow:hidden;"><div data-bar="true" data-pct="95" style="height:100%;width:0;background:repeating-linear-gradient(90deg,#FF2E3A 0 7px,rgba(255,46,58,0.22) 7px 11px);transition:width 1.1s cubic-bezier(0.22,1,0.36,1);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:#EDEFF2;">RAG &amp; VECTOR</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF6B5E;">92</span></div><div style="height:16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);overflow:hidden;"><div data-bar="true" data-pct="92" style="height:100%;width:0;background:repeating-linear-gradient(90deg,#FF2E3A 0 7px,rgba(255,46,58,0.22) 7px 11px);transition:width 1.1s cubic-bezier(0.22,1,0.36,1);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:#EDEFF2;">VISION &amp; MULTIMODAL</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF6B5E;">88</span></div><div style="height:16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);overflow:hidden;"><div data-bar="true" data-pct="88" style="height:100%;width:0;background:repeating-linear-gradient(90deg,#FF2E3A 0 7px,rgba(255,46,58,0.22) 7px 11px);transition:width 1.1s cubic-bezier(0.22,1,0.36,1);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:#EDEFF2;">CLOUD MLOPS</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF6B5E;">85</span></div><div style="height:16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);overflow:hidden;"><div data-bar="true" data-pct="85" style="height:100%;width:0;background:repeating-linear-gradient(90deg,#FF2E3A 0 7px,rgba(255,46,58,0.22) 7px 11px);transition:width 1.1s cubic-bezier(0.22,1,0.36,1);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:#EDEFF2;">DATA ENGINEERING</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF6B5E;">90</span></div><div style="height:16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);overflow:hidden;"><div data-bar="true" data-pct="90" style="height:100%;width:0;background:repeating-linear-gradient(90deg,#FF2E3A 0 7px,rgba(255,46,58,0.22) 7px 11px);transition:width 1.1s cubic-bezier(0.22,1,0.36,1);"></div></div></div>
+      </div>
+      <div data-reveal="true" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);padding:20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#FF6B5E;margin-bottom:12px;">CH.01 · GEN AI</div><div style="display:flex;flex-wrap:wrap;gap:7px;"><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">RAG</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">Multi-Agent</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">Fine-Tuning</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">MCP</span></div></div>
+        <div style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);padding:20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#FF6B5E;margin-bottom:12px;">CH.02 · FRAMEWORKS</div><div style="display:flex;flex-wrap:wrap;gap:7px;"><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">PyTorch</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">LangGraph</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">LangChain</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">CrewAI</span></div></div>
+        <div style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);padding:20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#FF6B5E;margin-bottom:12px;">CH.03 · CLOUD</div><div style="display:flex;flex-wrap:wrap;gap:7px;"><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">AWS</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">Docker</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">Airflow</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">ETL</span></div></div>
+        <div style="background:#0b0b0d;border:1px solid rgba(255,255,255,0.08);padding:20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#FF6B5E;margin-bottom:12px;">CH.04 · DATA</div><div style="display:flex;flex-wrap:wrap;gap:7px;"><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">ClickHouse</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">Qdrant</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">Redis</span><span style="font-size:12.5px;color:#C7D0DC;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:5px 10px;">MongoDB</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" style="padding:60px 40px 110px;background:#050506;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="true" style="display:flex;align-items:center;gap:14px;margin-bottom:28px;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#FF6B5E;">ROLL CREDITS</span><div style="flex:1;height:1px;background:rgba(255,46,58,0.25);"></div></div>
+    <div data-reveal="true" style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:30px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6a7280;letter-spacing:1px;">01 · AWARD</span><span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(16px,1.8vw,22px);color:#F3F6FB;">Winner — Ellucian Hackathon</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">Ellucian</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6a7280;letter-spacing:1px;">02 · CERT</span><span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(16px,1.8vw,22px);color:#F3F6FB;">Agentic AI Certification</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">DeepLearning.AI</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6a7280;letter-spacing:1px;">03 · CERT</span><span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(16px,1.8vw,22px);color:#F3F6FB;">AWS Fundamentals</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">Coursera</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6a7280;letter-spacing:1px;">04 · CREATOR</span><span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(16px,1.8vw,22px);color:#F3F6FB;">YouTube — SruthasSnap</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;">3K+ subs</span></div>
+    </div>
+    <div data-reveal="true" style="background:linear-gradient(120deg,rgba(255,46,58,0.1),#0b0b0d);border:1px solid rgba(255,255,255,0.08);border-left:2px solid #FF2E3A;padding:30px 34px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;">
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#FF6B5E;text-transform:uppercase;">Education</div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;margin:6px 0 4px;color:#F3F6FB;">CMR Institute of Technology</h3><p style="margin:0;color:#9AA4B4;font-size:14.5px;">B.E. AI &amp; Data Science · <span style="color:#FF2E3A;font-weight:700;">CGPA 9.03</span></p></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#8A93A3;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:10px 20px;">2021–2025 · Bangalore</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding:110px 40px;background:#050506;border-top:1px solid rgba(255,46,58,0.25);">
+  <div data-reveal="true" style="max-width:1100px;margin:0 auto;background:#0b0b0d;border:1px solid rgba(255,46,58,0.22);padding:50px;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#FF2E3A;background:#060607;border:1px solid rgba(255,46,58,0.4);padding:8px 13px;">FINAL SCENE</span><div style="flex:1;min-width:50px;height:13px;background:repeating-linear-gradient(45deg,#0f0f10 0 9px,#d9d9d9 9px 18px);opacity:0.5;"></div></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,4.4vw,54px);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase;margin:0 0 16px;color:#F3F6FB;">That's a wrap.<br><span style="color:#FF2E3A;">Let's roll.</span></h2>
+      <p style="color:#9AA4B4;font-size:15.5px;line-height:1.6;margin:0 0 28px;">Open to full-time AI Engineering roles, multi-agent RAG architecture and custom LLM solutions.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a href="mailto:srujansrutha01@gmail.com" data-magnetic="true" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:15px 20px;transition:border-color 0.3s;"><span style="font-family:'JetBrains Mono',monospace;color:#FF2E3A;">@</span><div><div style="font-size:11.5px;color:#6b7688;font-family:'JetBrains Mono',monospace;">EMAIL</div><div style="font-weight:700;color:#EDEFF2;font-size:14px;">srujansrutha01@gmail.com</div></div></a>
+        <a href="tel:+919741021059" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:15px 20px;transition:border-color 0.3s;"><span style="font-family:'JetBrains Mono',monospace;color:#FF2E3A;">#</span><div><div style="font-size:11.5px;color:#6b7688;font-family:'JetBrains Mono',monospace;">PHONE</div><div style="font-weight:700;color:#EDEFF2;font-size:14px;">+91 97410 21059</div></div></a>
+        <a href="https://linkedin.com/in/j-srujan-vishwakarma" target="_blank" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:15px 20px;transition:border-color 0.3s;"><span style="font-family:'JetBrains Mono',monospace;color:#FF2E3A;">in</span><div><div style="font-size:11.5px;color:#6b7688;font-family:'JetBrains Mono',monospace;">LINKEDIN</div><div style="font-weight:700;color:#EDEFF2;font-size:14px;">j-srujan-vishwakarma</div></div></a>
+      </div>
+    </div>
+    <form data-contact-form="true" style="display:flex;flex-direction:column;gap:14px;">
+      <input class="pf-input" data-cf="name" type="text" placeholder="Your name" required style="width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);padding:15px 18px;color:#EDEFF2;font-size:15px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;">
+      <input class="pf-input" data-cf="email" type="email" placeholder="Your email" required style="width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);padding:15px 18px;color:#EDEFF2;font-size:15px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;">
+      <textarea class="pf-input" data-cf="message" rows="5" placeholder="Your message" required style="width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);padding:15px 18px;color:#EDEFF2;font-size:15px;outline:none;resize:vertical;transition:border-color 0.2s,box-shadow 0.2s;"></textarea>
+      <button type="submit" data-magnetic="true" style="cursor:pointer;background:#FF2E3A;color:#fff;border:none;padding:16px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;letter-spacing:1px;">▶ TRANSMIT MESSAGE</button>
+      <div data-cf-status="true" style="display:none;text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF6B5E;padding-top:4px;"></div>
+    </form>
+  </div>
+</section>
+
+<footer style="padding:32px 40px;border-top:1px solid rgba(255,46,58,0.25);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;max-width:1200px;margin:0 auto;">
+  <div style="color:#6b7688;font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;">© 2026 J SRUJAN VISHWAKARMA · <span style="color:#FF2E3A;">THAT'S A WRAP.</span></div>
+  <div style="display:flex;gap:22px;font-size:12px;font-family:'JetBrains Mono',monospace;">
+    <a href="https://github.com/srujan-vishwakarma" target="_blank" style="color:#96A0B0;">GITHUB</a>
+    <a href="https://linkedin.com/in/j-srujan-vishwakarma" target="_blank" style="color:#96A0B0;">LINKEDIN</a>
+    <a href="https://youtube.com/@SruthasSnap" target="_blank" style="color:#96A0B0;">YOUTUBE</a>
+  </div>
+</footer>
+
+<button data-open-chat="true" data-magnetic="true" style="position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#FF2E3A;border:none;color:#fff;font-size:16px;font-family:'JetBrains Mono',monospace;font-weight:700;cursor:pointer;z-index:1500;box-shadow:0 12px 34px rgba(255,46,58,0.45);">●</button>
+
+<div data-chat-drawer="true" style="position:fixed;bottom:96px;right:28px;width:400px;max-width:calc(100vw - 40px);height:560px;max-height:calc(100vh - 130px);background:rgba(8,8,10,0.97);backdrop-filter:blur(24px);border:1px solid rgba(255,46,58,0.3);z-index:1500;display:flex;flex-direction:column;box-shadow:0 30px 70px rgba(0,0,0,0.7);opacity:0;pointer-events:none;transform:translateY(16px) scale(0.98);transition:opacity 0.3s,transform 0.3s;overflow:hidden;">
+  <div style="padding:16px 20px;border-bottom:1px solid rgba(255,46,58,0.25);display:flex;justify-content:space-between;align-items:center;"><div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:1px;color:#F3F6FB;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;animation:pfblink 1s infinite;"></span>COMMS · LIVE FEED</div><button data-close-chat="true" style="background:none;border:none;color:#8A93A3;font-size:18px;cursor:pointer;">✕</button></div>
+  <div data-chat-messages="true" class="pf-scroll" style="flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;">
+    <div style="max-width:88%;padding:13px 16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:#D7DEE8;font-size:14px;line-height:1.55;align-self:flex-start;">COMMS online. Ask me anything about Srujan's work, projects or skills.</div>
+    <div style="display:flex;flex-wrap:wrap;gap:7px;"><button data-suggest="What has Srujan built?" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B9C4D4;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;">› what has he built?</button><button data-suggest="Tell me about his Agentic RAG platform" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B9C4D4;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;">› agentic RAG</button><button data-suggest="What is his biggest technical impact?" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B9C4D4;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;">› biggest impact?</button></div>
+  </div>
+  <div style="padding:14px 18px;border-top:1px solid rgba(255,46,58,0.25);display:flex;gap:10px;"><input data-chat-input="true" type="text" placeholder="transmit…" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:11px 16px;color:#EDEFF2;font-size:14px;outline:none;"><button data-chat-send="true" style="background:#FF2E3A;border:none;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;">➔</button></div>
+</div>
+
+<div data-modal-overlay="true" style="position:fixed;inset:0;background:rgba(2,2,4,0.8);backdrop-filter:blur(10px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.3s;">
+  <div class="pf-scroll" style="background:#0b0b0d;border:1px solid rgba(255,46,58,0.3);max-width:680px;width:100%;max-height:86vh;overflow-y:auto;padding:40px;position:relative;box-shadow:0 40px 90px rgba(0,0,0,0.7);">
+    <button data-close-modal="true" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#8A93A3;width:34px;height:34px;font-size:15px;cursor:pointer;">✕</button>
+    <div data-modal-body="true"></div>
+  </div>
+</div>
+
+<div data-palette-overlay="true" style="position:fixed;inset:0;background:rgba(2,2,4,0.7);backdrop-filter:blur(8px);z-index:2500;display:flex;align-items:flex-start;justify-content:center;padding-top:14vh;opacity:0;pointer-events:none;transition:opacity 0.2s;">
+  <div style="width:560px;max-width:calc(100vw - 40px);background:#0b0b0d;border:1px solid rgba(255,46,58,0.3);overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,0.7);">
+    <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,46,58,0.25);"><span style="color:#FF2E3A;font-family:'JetBrains Mono',monospace;">▶</span><input data-palette-input="true" type="text" placeholder="Scene select — jump anywhere…" style="flex:1;background:none;border:none;color:#EDEFF2;font-size:15px;outline:none;font-family:'JetBrains Mono',monospace;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5b6576;border:1px solid rgba(255,255,255,0.15);padding:2px 7px;">ESC</span></div>
+    <div data-palette-list="true" class="pf-scroll" style="max-height:340px;overflow-y:auto;padding:8px;"></div>
+  </div>
+</div>
+
+<script src="/static/js/main.js"></script>
 </body>
 </html>

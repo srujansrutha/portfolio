@@ -270,15 +270,8 @@ async def handle_contact(contact: ContactMessage):
         "message": f"Thank you, {contact.name}! Srujan has received your message and will reply shortly to {contact.email}."
     }
 
-@app.post("/api/chat")
-async def ai_chat_assistant(query: ChatQuery):
-    """
-    Interactive Assistant Endpoint that answers recruiter/visitor questions about 
-    Srujan's experience, skills, projects, and background.
-    """
-    msg = query.message.strip().lower()
-    
-    # Smart Intent Matching System based on Resume Context
+def _keyword_reply(msg: str) -> str:
+    """Fallback keyword responder used when no LLM API key is configured."""
     if any(k in msg for k in ["hello", "hi", "hey", "who are you"]):
         reply = (
             "Greetings! I am Srujan's Portfolio AI Assistant. "
@@ -334,7 +327,44 @@ async def ai_chat_assistant(query: ChatQuery):
             f"Try asking specifically about his 'RAG project', 'AWS experience', 'VLM work', or 'Skills'!"
         )
 
-    return {"response": reply}
+    return reply
+
+
+@app.post("/api/chat")
+async def ai_chat_assistant(query: ChatQuery):
+    """LLM-backed assistant (Anthropic) grounded in PROFILE_DATA, with keyword fallback."""
+    user_msg = query.message.strip()
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if api_key:
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=api_key)
+            system = (
+                f"You are the AI assistant (COMMS) for {PROFILE_DATA['name']}'s portfolio, "
+                f"a {PROFILE_DATA['title']} based in {PROFILE_DATA['location']}. Answer visitor and "
+                f"recruiter questions about him warmly and concisely (2-4 sentences), in third person. "
+                f"Summary: {PROFILE_DATA['summary']} Specialization: {PROFILE_DATA['specialization']}. "
+                f"Education: {PROFILE_DATA['education']['degree']} at {PROFILE_DATA['education']['institution']} "
+                f"({PROFILE_DATA['education']['period']}), CGPA {PROFILE_DATA['education']['cgpa']}. "
+                f"Contact: {PROFILE_DATA['email']}, {PROFILE_DATA['phone']}. Experience: "
+                + " | ".join(f"{e['company']} - {e['role']} ({e['period']})" for e in PROFILE_DATA['experience'])
+                + ". Projects: "
+                + " | ".join(f"{p['title']}: {p['tagline']}" for p in PROFILE_DATA['projects'])
+                + ". If asked something unrelated to Srujan, gently redirect to his work. Never invent facts beyond these."
+            )
+            resp = client.messages.create(
+                model=os.environ.get("CHAT_MODEL", "claude-3-5-haiku-latest"),
+                max_tokens=400,
+                system=system,
+                messages=[{"role": "user", "content": user_msg}],
+            )
+            text = "".join(getattr(b, "text", "") for b in resp.content).strip()
+            if text:
+                return {"response": text}
+        except Exception as e:
+            print("LLM chat failed, using keyword fallback:", e)
+    return {"response": _keyword_reply(user_msg.lower())}
+
 
 if __name__ == "__main__":
     import uvicorn
