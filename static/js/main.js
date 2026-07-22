@@ -1,9 +1,11 @@
 /* ==========================================================================
-   J SRUJAN VISHWAKARMA - PORTFOLIO INTERACTIVE LOGIC & NEURAL PARTICLES
+   J SRUJAN VISHWAKARMA - 3D THREE.JS WEBGL ENGINE & INTERACTIVE PHYSICS
+   Inspired by fuch.ai 3D aesthetics
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initNeuralCanvas();
+    init3DWebGLCore();
+    init3DCardPhysics();
     initTypingEffect();
     initProjectFiltering();
     initChatBot();
@@ -12,87 +14,187 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   1. NEURAL PARTICLE CANVAS ANIMATION
+   1. THREE.JS 3D WEBGL NEURAL CORE SCENE
    -------------------------------------------------------------------------- */
-function initNeuralCanvas() {
-    const canvas = document.getElementById('neural-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    
+function init3DWebGLCore() {
+    const container = document.getElementById('webgl-container');
+    const canvas = document.getElementById('webgl-canvas');
+    if (!container || !canvas || typeof THREE === 'undefined') return;
+
+    // 3D Scene, Camera, Renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.z = 4.5;
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Handle Window Resize
     window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+        if (!container) return;
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
     });
 
-    const particles = [];
-    const particleCount = Math.min(Math.floor(width / 18), 70);
+    // 1. Central 3D Outer Wireframe Core
+    const outerGeo = new THREE.IcosahedronGeometry(1.6, 2);
+    const outerMat = new THREE.MeshBasicMaterial({
+        color: 0x00F2FE,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+    });
+    const outerCore = new THREE.Mesh(outerGeo, outerMat);
+    scene.add(outerCore);
+
+    // 2. Inner Glowing Solid Core
+    const innerGeo = new THREE.IcosahedronGeometry(0.9, 1);
+    const innerMat = new THREE.MeshPhongMaterial({
+        color: 0x7F00FF,
+        emissive: 0x4FACFE,
+        emissiveIntensity: 0.6,
+        shininess: 90,
+        wireframe: false
+    });
+    const innerCore = new THREE.Mesh(innerGeo, innerMat);
+    scene.add(innerCore);
+
+    // 3. Orbiting Neural Particle Ring
+    const particleCount = 600;
+    const particleGeo = new THREE.BufferGeometry();
+    const particlePos = new Float32Array(particleCount * 3);
+    const particleColors = new Float32Array(particleCount * 3);
+
+    const color1 = new THREE.Color(0x00F2FE);
+    const color2 = new THREE.Color(0x9B51E0);
 
     for (let i = 0; i < particleCount; i++) {
-        particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.8,
-            vy: (Math.random() - 0.5) * 0.8,
-            radius: Math.random() * 2 + 1,
-            color: Math.random() > 0.5 ? '#00F2FE' : '#4FACFE'
-        });
+        const radius = 2.2 + (Math.random() - 0.5) * 0.6;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = (Math.random() - 0.5) * Math.PI;
+
+        particlePos[i * 3] = radius * Math.cos(theta) * Math.cos(phi);
+        particlePos[i * 3 + 1] = radius * Math.sin(phi);
+        particlePos[i * 3 + 2] = radius * Math.sin(theta) * Math.cos(phi);
+
+        const mixedColor = color1.clone().lerp(color2, Math.random());
+        particleColors[i * 3] = mixedColor.r;
+        particleColors[i * 3 + 1] = mixedColor.g;
+        particleColors[i * 3 + 2] = mixedColor.b;
     }
 
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+
+    const particleMat = new THREE.PointsMaterial({
+        size: 0.04,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85
+    });
+
+    const particleRing = new THREE.Points(particleGeo, particleMat);
+    scene.add(particleRing);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0x00F2FE, 2, 50);
+    pointLight.position.set(5, 5, 5);
+    scene.add(pointLight);
+
+    const purpleLight = new THREE.PointLight(0x9B51E0, 2, 50);
+    purpleLight.position.set(-5, -5, 5);
+    scene.add(purpleLight);
+
+    // Interactive Mouse Tracking
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+        mouseX = (e.clientX - windowHalfX) / 100;
+        mouseY = (e.clientY - windowHalfY) / 100;
+    });
+
+    // Render Animation Loop
+    let clock = new THREE.Clock();
+
     function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < particles.length; i++) {
-            let p = particles[i];
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.x < 0 || p.x > width) p.vx *= -1;
-            if (p.y < 0 || p.y > height) p.vy *= -1;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = p.color;
-            ctx.fill();
-
-            // Connect nearby nodes
-            for (let j = i + 1; j < particles.length; j++) {
-                let p2 = particles[j];
-                let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                if (dist < 130) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(0, 242, 254, ${1 - dist / 130 * 0.85})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        }
         requestAnimationFrame(animate);
+
+        const elapsedTime = clock.getElapsedTime();
+
+        // 3D Rotations
+        outerCore.rotation.x = elapsedTime * 0.15;
+        outerCore.rotation.y = elapsedTime * 0.25;
+
+        innerCore.rotation.x = -elapsedTime * 0.3;
+        innerCore.rotation.y = -elapsedTime * 0.2;
+
+        particleRing.rotation.y = elapsedTime * 0.1;
+        particleRing.rotation.z = elapsedTime * 0.05;
+
+        // Smooth Mouse Parallax Lerp
+        targetX += (mouseX - targetX) * 0.05;
+        targetY += (mouseY - targetY) * 0.05;
+
+        scene.rotation.y = targetX * 0.4;
+        scene.rotation.x = targetY * 0.4;
+
+        renderer.render(scene, camera);
     }
     animate();
 }
 
 /* --------------------------------------------------------------------------
-   2. HERO TYPING ANIMATION EFFECT
+   2. 3D CARD TILT PHYSICS (MOUSE PERSPECTIVE)
+   -------------------------------------------------------------------------- */
+function init3DCardPhysics() {
+    const cards = document.querySelectorAll('.project-card, .timeline-content, .skill-category-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (centerY - y) / 14;
+            const rotateY = (x - centerX) / 14;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   3. HERO TYPING ANIMATION
    -------------------------------------------------------------------------- */
 function initTypingEffect() {
     const el = document.getElementById('typing-text');
     if (!el) return;
-    
+
     const titles = [
-        "AI Engineer",
+        "AI & ML Engineer",
         "Generative AI Specialist",
         "Multi-Agent RAG Architect",
-        "Vision-Language Model Developer",
+        "Vision-Language Model Fine-tuner",
         "Cloud MLOps Innovator"
     ];
-    
+
     let titleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -100,24 +202,24 @@ function initTypingEffect() {
 
     function type() {
         const currentTitle = titles[titleIndex];
-        
+
         if (isDeleting) {
             el.textContent = currentTitle.substring(0, charIndex - 1);
             charIndex--;
-            typingSpeed = 50;
+            typingSpeed = 40;
         } else {
             el.textContent = currentTitle.substring(0, charIndex + 1);
             charIndex++;
-            typingSpeed = 100;
+            typingSpeed = 90;
         }
 
         if (!isDeleting && charIndex === currentTitle.length) {
-            typingSpeed = 2000; // Pause at end
+            typingSpeed = 2200; // Pause at full title
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             titleIndex = (titleIndex + 1) % titles.length;
-            typingSpeed = 500;
+            typingSpeed = 400;
         }
 
         setTimeout(type, typingSpeed);
@@ -126,7 +228,7 @@ function initTypingEffect() {
 }
 
 /* --------------------------------------------------------------------------
-   3. PROJECT CATEGORY FILTERING & MODAL VIEWER
+   4. PROJECT CATEGORY FILTERING & 3D MODAL VIEWER
    -------------------------------------------------------------------------- */
 function initProjectFiltering() {
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -160,27 +262,27 @@ function openProjectModal(projectId) {
 
             const modalBody = document.getElementById('modal-body-content');
             modalBody.innerHTML = `
-                <div class="project-badge" style="margin-bottom: 12px; display: inline-block;">${project.category} • ${project.period}</div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 12px;">${project.title}</h2>
-                <p style="color: var(--primary-cyan); font-weight: 600; margin-bottom: 20px;">${project.tagline}</p>
-                <p style="color: var(--text-muted); margin-bottom: 24px; line-height: 1.7;">${project.description}</p>
+                <div class="project-badge" style="margin-bottom: 14px; display: inline-block;">${project.category} • ${project.period}</div>
+                <h2 style="font-size: 2rem; margin-bottom: 14px;">${project.title}</h2>
+                <p style="color: var(--primary-cyan); font-weight: 600; margin-bottom: 22px; font-size: 1.05rem;">${project.tagline}</p>
+                <p style="color: var(--text-muted); margin-bottom: 26px; line-height: 1.8;">${project.description}</p>
                 
-                <h4 style="color: #FFF; margin-bottom: 12px; font-size: 1.1rem;">Key Architecture & Deliverables:</h4>
-                <ul style="list-style: none; margin-bottom: 24px;">
-                    ${project.features.map(f => `<li style="color: var(--text-muted); margin-bottom: 8px; position: relative; padding-left: 20px;"><span style="position: absolute; left: 0; color: var(--accent-green);">✓</span> ${f}</li>`).join('')}
+                <h4 style="color: #FFF; margin-bottom: 14px; font-size: 1.15rem;">Key Architecture & Deliverables:</h4>
+                <ul style="list-style: none; margin-bottom: 28px;">
+                    ${project.features.map(f => `<li style="color: var(--text-muted); margin-bottom: 10px; position: relative; padding-left: 24px;"><span style="position: absolute; left: 0; color: var(--accent-neon-green);">✓</span> ${f}</li>`).join('')}
                 </ul>
 
-                <h4 style="color: #FFF; margin-bottom: 12px; font-size: 1.1rem;">Tech Stack:</h4>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
-                    ${project.tech_stack.map(t => `<span class="tech-tag" style="background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.2); color: var(--primary-cyan);">${t}</span>`).join('')}
+                <h4 style="color: #FFF; margin-bottom: 14px; font-size: 1.15rem;">Tech Stack:</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px;">
+                    ${project.tech_stack.map(t => `<span class="tech-tag" style="background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); color: var(--primary-cyan); font-size: 0.85rem; padding: 6px 14px;">${t}</span>`).join('')}
                 </div>
 
                 <div style="display: flex; gap: 16px;">
-                    ${project.github !== '#' ? `<a href="${project.github}" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">View GitHub Repo</a>` : ''}
-                    <button onclick="closeModal()" class="btn-secondary" style="padding: 10px 24px; font-size: 0.9rem;">Close Window</button>
+                    ${project.github !== '#' ? `<a href="${project.github}" target="_blank" class="btn-primary" style="padding: 12px 28px; font-size: 0.92rem;">View GitHub Repo</a>` : ''}
+                    <button onclick="closeModal()" class="btn-secondary" style="padding: 12px 28px; font-size: 0.92rem;">Close Window</button>
                 </div>
             `;
-            
+
             document.getElementById('project-modal').classList.add('open');
         });
 }
@@ -190,7 +292,7 @@ function closeModal() {
 }
 
 /* --------------------------------------------------------------------------
-   4. INTERACTIVE AI CHATBOT DRAWER
+   5. AI CHATBOT DRAWER LOGIC
    -------------------------------------------------------------------------- */
 function initChatBot() {
     const chatBtn = document.getElementById('chat-widget-btn');
@@ -214,12 +316,10 @@ function initChatBot() {
         const text = chatInput.value.trim();
         if (!text) return;
 
-        // User Bubble
         appendBubble(text, 'user');
         chatInput.value = '';
 
-        // Bot Typing Indicator
-        const typingId = appendBubble('Thinking...', 'bot');
+        const typingId = appendBubble('Processing query...', 'bot');
 
         fetch('/api/chat', {
             method: 'POST',
@@ -232,7 +332,7 @@ function initChatBot() {
             chatMessages.scrollTop = chatMessages.scrollHeight;
         })
         .catch(() => {
-            document.getElementById(typingId).textContent = "Sorry, I am temporarily offline. Please check Srujan's email or LinkedIn!";
+            document.getElementById(typingId).textContent = "Sorry, I am temporarily offline. Please reach out to Srujan via srujansrutha01@gmail.com!";
         });
     }
 
@@ -254,7 +354,7 @@ function initChatBot() {
 }
 
 /* --------------------------------------------------------------------------
-   5. CONTACT FORM HANDLER
+   6. CONTACT FORM SUBMISSION
    -------------------------------------------------------------------------- */
 function initContactForm() {
     const form = document.getElementById('contact-form');
@@ -269,7 +369,7 @@ function initContactForm() {
 
         statusDiv.style.display = 'block';
         statusDiv.className = 'section-tag';
-        statusDiv.textContent = "Sending message...";
+        statusDiv.textContent = "Transmitting message...";
 
         fetch('/api/contact', {
             method: 'POST',
@@ -279,18 +379,18 @@ function initContactForm() {
         .then(res => res.json())
         .then(data => {
             statusDiv.textContent = data.message;
-            statusDiv.style.borderColor = 'var(--accent-green)';
-            statusDiv.style.color = 'var(--accent-green)';
+            statusDiv.style.borderColor = 'var(--accent-neon-green)';
+            statusDiv.style.color = 'var(--accent-neon-green)';
             form.reset();
         })
         .catch(() => {
-            statusDiv.textContent = "Failed to send. Please reach out via srujansrutha01@gmail.com";
+            statusDiv.textContent = "Message failed. Direct email: srujansrutha01@gmail.com";
         });
     });
 }
 
 /* --------------------------------------------------------------------------
-   6. SCROLLSPY FOR NAVBAR
+   7. SCROLLSPY FOR NAVBAR
    -------------------------------------------------------------------------- */
 function initScrollSpy() {
     const sections = document.querySelectorAll('section');

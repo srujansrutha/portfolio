@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ profile.name }} | AI Engineer & GenAI Specialist</title>
+    <title>{{ profile.name }} | AI & ML Engineer Portfolio</title>
     <meta name="description" content="{{ profile.summary }}">
-    <meta name="keywords" content="AI Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, Bengaluru">
+    <meta name="keywords" content="AI Engineer, ML Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, Bengaluru">
     <meta name="author" content="{{ profile.name }}">
 
     <!-- Open Graph / Social -->
-    <meta property="og:title" content="{{ profile.name }} - AI Engineer Portfolio">
-    <meta property="og:description" content="AI Engineer specializing in Generative AI, multi-agent RAG systems, Vision-Language Models, and scalable ML pipelines.">
+    <meta property="og:title" content="{{ profile.name }} - 3D AI Engineer Portfolio">
+    <meta property="og:description" content="AI & ML Engineer specializing in Generative AI, Multi-Agent RAG systems, Vision-Language Models, and Scalable ML Pipelines.">
     <meta property="og:type" content="website">
 
     <!-- CSS & Fonts -->
@@ -19,8 +19,8 @@
 </head>
 <body>
 
-    <!-- Background Neural Canvas & Glow Effects -->
-    <canvas id="neural-canvas"></canvas>
+    <!-- Cyberpunk HUD Background Effects -->
+    <div class="hud-scanline"></div>
     <div class="bg-glow-orb glow-1"></div>
     <div class="bg-glow-orb glow-2"></div>
 
@@ -31,7 +31,6 @@
             <span>J Srujan <span style="color: var(--primary-cyan);">Vishwakarma</span></span>
         </a>
         <ul class="nav-links">
-            <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -43,18 +42,18 @@
         </a>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH 3D WEBGL ENGINE -->
     <section id="hero" class="hero-section">
         <div class="section-container hero-grid">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <span class="pulse-dot"></span> Available for AI Engineering Roles & Projects
+                    <span class="pulse-dot"></span> AI & ML Engineer • Available for Roles
                 </div>
                 <h1 class="hero-name">
                     Hi, I'm <br><span class="gradient-text">J Srujan</span>
                 </h1>
                 <div class="hero-subtitle">
-                    <span id="typing-text">AI Engineer</span><span class="typing-cursor"></span>
+                    <span id="typing-text">AI & ML Engineer</span><span class="typing-cursor"></span>
                 </div>
                 <p class="hero-bio">
                     {{ profile.summary }}
@@ -80,39 +79,24 @@
                 </div>
             </div>
 
-            <!-- Visual Code Showcase -->
-            <div class="hero-visual-card">
-                <div class="visual-header">
-                    <span class="mac-btn mac-close"></span>
-                    <span class="mac-btn mac-min"></span>
-                    <span class="mac-btn mac-max"></span>
-                    <span class="visual-title">agentic_rag_service.py</span>
-                </div>
-                <div class="code-block">
-                    <span class="code-keyword">from</span> fastapi <span class="code-keyword">import</span> FastAPI<br>
-                    <span class="code-keyword">from</span> langgraph.graph <span class="code-keyword">import</span> StateGraph<br>
-                    <span class="code-keyword">from</span> qdrant_client <span class="code-keyword">import</span> QdrantClient<br><br>
-                    <span class="code-comment"># Initialize AI Agent Engine</span><br>
-                    app = <span class="code-fn">FastAPI</span>(title=<span class="code-string">"Srujan_AI_Core"</span>)<br>
-                    vector_db = <span class="code-fn">QdrantClient</span>(host=<span class="code-string">"qdrant"</span>, port=<span class="code-num">6333</span>)<br><br>
-                    <span class="code-keyword">@app</span>.<span class="code-fn">post</span>(<span class="code-string">"/v1/agent/query"</span>)<br>
-                    <span class="code-keyword">async def</span> <span class="code-fn">execute_rag_flow</span>(user_prompt: <span class="code-string">str</span>):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;vlm_accuracy = <span class="code-num">0.98</span> <span class="code-comment"># 98% Apparel Labeling</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;nodes = [<span class="code-string">"retriever"</span>, <span class="code-string">"reasoner"</span>, <span class="code-string">"clickhouse_mcp"</span>]<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;graph = <span class="code-fn">StateGraph</span>(nodes).<span class="code-fn">compile</span>()<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return await</span> graph.<span class="code-fn">ainvoke</span>(user_prompt)
+            <!-- 3D WEBGL INTERACTIVE NEURAL ENGINE VIEWPORT -->
+            <div class="webgl-3d-wrapper" id="webgl-container">
+                <canvas id="webgl-canvas"></canvas>
+                <div class="hud-canvas-overlay">
+                    <span class="pulse-dot"></span>
+                    <span>3D Neural Core • Move Mouse to Tilt</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- EXPERIENCE SECTION -->
-    <section id="experience" style="position: relative; z-index: 1;">
+    <section id="experience">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Career Trajectory</span>
                 <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">Driving measurable impact in Generative AI, large-scale ETL pipelines, and cloud optimization.</p>
+                <p class="section-subtitle">Pioneering AI breakthroughs in Generative AI, ClickHouse analytics, and Cloud MLOps.</p>
             </div>
 
             <div class="timeline">
@@ -122,7 +106,7 @@
                     <div class="timeline-content">
                         <div class="timeline-meta">
                             <div>
-                                <h3 class="company-name">{{ exp.company }} <span style="font-weight:400; color: var(--text-muted); font-size: 1rem;">• {{ exp.location }}</span></h3>
+                                <h3 class="company-name">{{ exp.company }} <span style="font-weight:400; color: var(--text-muted); font-size: 1.05rem;">• {{ exp.location }}</span></h3>
                                 <span class="role-badge">{{ exp.role }}</span>
                             </div>
                             <span class="timeline-period">{{ exp.period }}</span>
@@ -144,13 +128,13 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" style="position: relative; z-index: 1;">
+    <!-- PROJECTS SECTION WITH 3D TILT PHYSICS -->
+    <section id="projects">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Portfolio Showcase</span>
-                <h2 class="section-title">Featured AI Projects</h2>
-                <p class="section-subtitle">Real-world AI systems architected with FastAPI, LangGraph, Vision-Language Models, and PyTorch.</p>
+                <span class="section-tag">AI Showcase</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Real-world AI systems built with LangGraph, Vision-Language Models, PyTorch, and FastAPI.</p>
             </div>
 
             <div class="filter-container">
@@ -174,7 +158,7 @@
                     </div>
 
                     <div>
-                        <div class="tech-tags" style="margin-bottom: 20px;">
+                        <div class="tech-tags" style="margin-bottom: 22px;">
                             {% for t in proj.tech_stack %}
                             <span class="tech-tag">{{ t }}</span>
                             {% endfor %}
@@ -185,7 +169,7 @@
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </button>
                             {% if proj.github != '#' %}
-                            <a href="{{ proj.github }}" target="_blank" style="color: var(--text-muted); font-size: 0.85rem;" title="GitHub Repository">
+                            <a href="{{ proj.github }}" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;" title="GitHub Repository">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                             </a>
                             {% endif %}
@@ -197,13 +181,13 @@
         </div>
     </section>
 
-    <!-- SKILLS MATRIX -->
-    <section id="skills" style="position: relative; z-index: 1;">
+    <!-- SKILLS MATRIX SECTION -->
+    <section id="skills">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Technical Competencies</span>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">Deep technical expertise spanning modern LLM ecosystems, MLOps, vector search, and cloud architecture.</p>
+                <h2 class="section-title">Skills & Tech Ecosystem</h2>
+                <p class="section-subtitle">Deep expertise in modern LLM frameworks, vector databases, MLOps pipelines, and cloud architecture.</p>
             </div>
 
             <div class="skills-wrapper">
@@ -246,7 +230,7 @@
                 <div class="skill-category-card">
                     <div class="category-header">
                         <div class="category-icon">🗄️</div>
-                        <h3>Databases & Vector Stores</h3>
+                        <h3>Databases & Vector Search</h3>
                     </div>
                     <div class="skills-pills">
                         {% for item in profile.skills.databases %}
@@ -283,11 +267,11 @@
     </section>
 
     <!-- ACHIEVEMENTS & EDUCATION -->
-    <section id="achievements" style="position: relative; z-index: 1;">
+    <section id="achievements">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Recognitions & Education</span>
-                <h2 class="section-title">Achievements & Leadership</h2>
+                <span class="section-tag">Recognitions</span>
+                <h2 class="section-title">Achievements & Education</h2>
                 <p class="section-subtitle">Academic excellence, hackathon victories, and community leadership.</p>
             </div>
 
@@ -304,13 +288,13 @@
             </div>
 
             <!-- Education Box -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 32px; backdrop-filter: blur(16px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 28px; padding: 36px; backdrop-filter: blur(20px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
                 <div>
                     <span style="font-family: var(--font-code); color: var(--primary-cyan); font-size: 0.85rem; text-transform: uppercase;">Education</span>
-                    <h3 style="font-size: 1.6rem; margin: 4px 0;">{{ profile.education.institution }}</h3>
-                    <p style="color: var(--text-muted);">{{ profile.education.degree }} • <span style="color: var(--accent-green); font-weight: 600;">CGPA: {{ profile.education.cgpa }}</span></p>
+                    <h3 style="font-size: 1.7rem; margin: 4px 0;">{{ profile.education.institution }}</h3>
+                    <p style="color: var(--text-muted);">{{ profile.education.degree }} • <span style="color: var(--accent-neon-green); font-weight: 600;">CGPA: {{ profile.education.cgpa }}</span></p>
                 </div>
-                <div style="font-family: var(--font-code); color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 8px 18px; border-radius: 12px;">
+                <div style="font-family: var(--font-code); color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 10px 22px; border-radius: 14px;">
                     {{ profile.education.period }} | Bangalore
                 </div>
             </div>
@@ -318,31 +302,31 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" style="position: relative; z-index: 1;">
+    <section id="contact">
         <div class="section-container">
             <div class="contact-container">
                 <div class="contact-info">
                     <span class="section-tag">Let's Connect</span>
-                    <h3>Build the Future of <span class="gradient-text">AI Together</span></h3>
-                    <p>Open for full-time AI Engineer opportunities, multi-agent RAG consulting, and LLM deployments.</p>
+                    <h3>Build Next-Gen <span class="gradient-text">AI Systems</span></h3>
+                    <p>Open for full-time AI Engineering roles, multi-agent RAG architecture, and custom LLM solutions.</p>
 
                     <div class="contact-methods">
                         <a href="mailto:{{ profile.email }}" class="contact-method-item">
-                            <span style="font-size: 1.2rem;">📧</span>
+                            <span style="font-size: 1.3rem;">📧</span>
                             <div>
                                 <div style="font-size: 0.8rem; color: var(--text-dim);">Email Direct</div>
                                 <div style="font-weight: 600;">{{ profile.email }}</div>
                             </div>
                         </a>
                         <a href="tel:{{ profile.phone }}" class="contact-method-item">
-                            <span style="font-size: 1.2rem;">📱</span>
+                            <span style="font-size: 1.3rem;">📱</span>
                             <div>
                                 <div style="font-size: 0.8rem; color: var(--text-dim);">Phone</div>
                                 <div style="font-weight: 600;">{{ profile.phone }}</div>
                             </div>
                         </a>
                         <a href="{{ profile.social.linkedin }}" target="_blank" class="contact-method-item">
-                            <span style="font-size: 1.2rem;">💼</span>
+                            <span style="font-size: 1.3rem;">💼</span>
                             <div>
                                 <div style="font-size: 0.8rem; color: var(--text-dim);">LinkedIn</div>
                                 <div style="font-weight: 600;">j-srujan-vishwakarma</div>
@@ -360,12 +344,12 @@
                             <input type="email" id="form-email" placeholder="Your Email Address" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="form-message" rows="5" placeholder="Your Message or Project Opportunity" required></textarea>
+                            <textarea id="form-message" rows="5" placeholder="Your Project Opportunity or Inquiry" required></textarea>
                         </div>
                         <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-                            <span>Send Direct Message</span>
+                            <span>Send Message</span>
                         </button>
-                        <div id="contact-status" style="display: none; margin-top: 12px; text-align: center;"></div>
+                        <div id="contact-status" style="display: none; margin-top: 14px; text-align: center;"></div>
                     </form>
                 </div>
             </div>
@@ -374,9 +358,9 @@
 
     <!-- FOOTER -->
     <footer>
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-            <div>© {{ profile.name }}. Built with FastAPI & Python for Render.com deployment.</div>
-            <div style="display: flex; gap: 20px;">
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div>© {{ profile.name }}. 3D WebGL Portfolio powered by FastAPI.</div>
+            <div style="display: flex; gap: 24px;">
                 <a href="{{ profile.social.github }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">GitHub</a>
                 <a href="{{ profile.social.linkedin }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">LinkedIn</a>
                 <a href="{{ profile.social.youtube }}" target="_blank" style="color: var(--text-muted); text-decoration: none;">YouTube</a>
@@ -384,7 +368,7 @@
         </div>
     </footer>
 
-    <!-- AI ASSISTANT CHAT WIDGET -->
+    <!-- AI CHATBOT DRAWER -->
     <button id="chat-widget-btn" class="chat-widget-btn" title="Chat with Srujan's AI Assistant">
         🤖
     </button>
@@ -399,11 +383,11 @@
         </div>
         <div id="chat-messages" class="chat-messages">
             <div class="chat-bubble bot">
-                Hi! I'm Srujan's AI assistant. Ask me anything about his experience at TrendGully/Ellucian, Agentic RAG projects, VLM models, or technical skills!
+                Greetings! I'm Srujan's AI assistant. Ask me about his experience at TrendGully/Ellucian, Agentic RAG projects, Vision-Language Models, or technical skills!
             </div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Type a message (e.g. Tell me about RAG)...">
+            <input type="text" id="chat-input" placeholder="Ask about Srujan's AI projects...">
             <button id="chat-send-btn" class="chat-send-btn">➔</button>
         </div>
     </div>
@@ -416,7 +400,8 @@
         </div>
     </div>
 
-    <!-- JS Logic -->
+    <!-- Three.js Engine & Custom JS Logic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="/static/js/main.js"></script>
 </body>
 </html>
