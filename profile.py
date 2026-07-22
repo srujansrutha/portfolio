@@ -236,7 +236,7 @@ class ChatQuery(BaseModel):
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     """Serves the main interactive portfolio page."""
-    return templates.TemplateResponse("index.html", {"request": request, "profile": PROFILE_DATA})
+    return templates.TemplateResponse(request=request, name="index.html", context={"profile": PROFILE_DATA})
 
 @app.get("/api/profile")
 async def get_profile_json():
