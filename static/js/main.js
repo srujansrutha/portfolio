@@ -1,10 +1,10 @@
 /* ==========================================================================
-   J SRUJAN VISHWAKARMA - THREE.JS 3D QUANTUM NEURAL CORE & ENGINE
+   J SRUJAN VISHWAKARMA - 3D MECH ROBOT & FUCH.AI INTERACTIVE CONTROLLER
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    init3DQuantumCore();
-    init3DCardPhysics();
+    init3DMechRobot();
+    initPromptChips();
     initTypingEffect();
     initProjectFiltering();
     initChatBot();
@@ -13,103 +13,127 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   1. THREE.JS 3D QUANTUM NEURAL CORE SCENE
+   1. THREE.JS 3D MECH ROBOT / CHARACTER SCENE (FUCH.AI CENTERPIECE)
    -------------------------------------------------------------------------- */
-function init3DQuantumCore() {
-    const container = document.getElementById('webgl-container');
-    const canvas = document.getElementById('webgl-canvas');
-    if (!container || !canvas || typeof THREE === 'undefined') return;
+function init3DMechRobot() {
+    const canvas = document.getElementById('mech-canvas');
+    if (!canvas || typeof THREE === 'undefined') return;
 
-    // 3D Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 4.8;
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    camera.position.set(0, 0, 5.5);
 
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Handle Window Resize
     window.addEventListener('resize', () => {
-        if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     });
 
-    // 1. Central 3D Quantum Outer Icosahedron
-    const outerGeo = new THREE.IcosahedronGeometry(1.6, 2);
-    const outerMat = new THREE.MeshBasicMaterial({
-        color: 0x00F2FE,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.4
-    });
-    const outerCore = new THREE.Mesh(outerGeo, outerMat);
-    scene.add(outerCore);
+    // Robot Group
+    const robot = new THREE.Group();
 
-    // 2. Inner Glowing Core
-    const innerGeo = new THREE.IcosahedronGeometry(0.95, 1);
-    const innerMat = new THREE.MeshPhongMaterial({
-        color: 0x8A2BE2,
-        emissive: 0x4FACFE,
-        emissiveIntensity: 0.7,
-        shininess: 90,
-        wireframe: false
-    });
-    const innerCore = new THREE.Mesh(innerGeo, innerMat);
-    scene.add(innerCore);
-
-    // 3. Orbiting Neural Particle Constellation
-    const particleCount = 700;
-    const particleGeo = new THREE.BufferGeometry();
-    const particlePos = new Float32Array(particleCount * 3);
-    const particleColors = new Float32Array(particleCount * 3);
-
-    const color1 = new THREE.Color(0x00F2FE);
-    const color2 = new THREE.Color(0x8A2BE2);
-
-    for (let i = 0; i < particleCount; i++) {
-        const radius = 2.2 + (Math.random() - 0.5) * 0.7;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = (Math.random() - 0.5) * Math.PI;
-
-        particlePos[i * 3] = radius * Math.cos(theta) * Math.cos(phi);
-        particlePos[i * 3 + 1] = radius * Math.sin(phi);
-        particlePos[i * 3 + 2] = radius * Math.sin(theta) * Math.cos(phi);
-
-        const mixedColor = color1.clone().lerp(color2, Math.random());
-        particleColors[i * 3] = mixedColor.r;
-        particleColors[i * 3 + 1] = mixedColor.g;
-        particleColors[i * 3 + 2] = mixedColor.b;
-    }
-
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
-    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
-
-    const particleMat = new THREE.PointsMaterial({
-        size: 0.045,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.85
+    // Metallic Materials
+    const darkMetalMat = new THREE.MeshStandardMaterial({
+        color: 0x11161B,
+        roughness: 0.25,
+        metalness: 0.85
     });
 
-    const particleRing = new THREE.Points(particleGeo, particleMat);
-    scene.add(particleRing);
+    const silverJointMat = new THREE.MeshStandardMaterial({
+        color: 0x8A95A5,
+        roughness: 0.3,
+        metalness: 0.95
+    });
 
-    // Lighting Setup
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const glowingVisorMat = new THREE.MeshBasicMaterial({
+        color: 0x05A89E
+    });
+
+    // 1. Robot Head
+    const headGeo = new THREE.BoxGeometry(0.8, 0.65, 0.65);
+    const head = new THREE.Mesh(headGeo, darkMetalMat);
+    head.position.y = 1.1;
+
+    // Glowing Visor
+    const visorGeo = new THREE.BoxGeometry(0.55, 0.16, 0.05);
+    const visor = new THREE.Mesh(visorGeo, glowingVisorMat);
+    visor.position.set(0, 0.05, 0.33);
+    head.add(visor);
+
+    // Ears / Antenna Joints
+    const earGeo = new THREE.CylinderGeometry(0.08, 0.08, 0.15, 16);
+    const leftEar = new THREE.Mesh(earGeo, silverJointMat);
+    leftEar.rotation.z = Math.PI / 2;
+    leftEar.position.set(-0.45, 0.05, 0);
+    head.add(leftEar);
+
+    const rightEar = leftEar.clone();
+    rightEar.position.x = 0.45;
+    head.add(rightEar);
+
+    robot.add(head);
+
+    // 2. Neck
+    const neckGeo = new THREE.CylinderGeometry(0.12, 0.14, 0.2, 16);
+    const neck = new THREE.Mesh(neckGeo, silverJointMat);
+    neck.position.y = 0.72;
+    robot.add(neck);
+
+    // 3. Torso
+    const torsoGeo = new THREE.BoxGeometry(1.0, 1.1, 0.7);
+    const torso = new THREE.Mesh(torsoGeo, darkMetalMat);
+    torso.position.y = 0.1;
+
+    // Chest Plate Light Accent
+    const chestPlateGeo = new THREE.BoxGeometry(0.5, 0.3, 0.05);
+    const chestPlate = new THREE.Mesh(chestPlateGeo, glowingVisorMat);
+    chestPlate.position.set(0, 0.15, 0.36);
+    torso.add(chestPlate);
+
+    robot.add(torso);
+
+    // 4. Arms & Shoulders
+    const shoulderGeo = new THREE.SphereGeometry(0.2, 16, 16);
+    const leftShoulder = new THREE.Mesh(shoulderGeo, silverJointMat);
+    leftShoulder.position.set(-0.68, 0.5, 0);
+
+    const leftArmGeo = new THREE.CylinderGeometry(0.1, 0.09, 0.7, 16);
+    const leftArm = new THREE.Mesh(leftArmGeo, darkMetalMat);
+    leftArm.position.set(0, -0.4, 0);
+    leftShoulder.add(leftArm);
+    robot.add(leftShoulder);
+
+    const rightShoulder = leftShoulder.clone();
+    rightShoulder.position.x = 0.68;
+    robot.add(rightShoulder);
+
+    // 5. Floating Base Ring (Hologram Stand)
+    const ringGeo = new THREE.TorusGeometry(1.3, 0.02, 16, 100);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x05A89E, transparent: true, opacity: 0.6 });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = -1.1;
+    robot.add(ring);
+
+    scene.add(robot);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
 
-    const cyanLight = new THREE.PointLight(0x00F2FE, 2.5, 50);
-    cyanLight.position.set(5, 5, 5);
-    scene.add(cyanLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    dirLight.position.set(5, 10, 7);
+    scene.add(dirLight);
 
-    const violetLight = new THREE.PointLight(0x8A2BE2, 2.5, 50);
-    violetLight.position.set(-5, -5, 5);
-    scene.add(violetLight);
+    const blueLight = new THREE.PointLight(0x05A89E, 2, 20);
+    blueLight.position.set(-3, 2, 4);
+    scene.add(blueLight);
 
-    // Mouse Cursor Tracking
+    // Mouse Tracking for 3D Head & Body Tracking
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -118,8 +142,8 @@ function init3DQuantumCore() {
     document.addEventListener('mousemove', (e) => {
         const windowHalfX = window.innerWidth / 2;
         const windowHalfY = window.innerHeight / 2;
-        mouseX = (e.clientX - windowHalfX) / 100;
-        mouseY = (e.clientY - windowHalfY) / 100;
+        mouseX = (e.clientX - windowHalfX) / windowHalfX;
+        mouseY = (e.clientY - windowHalfY) / windowHalfY;
     });
 
     const clock = new THREE.Clock();
@@ -129,22 +153,18 @@ function init3DQuantumCore() {
 
         const elapsedTime = clock.getElapsedTime();
 
-        // 3D Core Rotation
-        outerCore.rotation.x = elapsedTime * 0.15;
-        outerCore.rotation.y = elapsedTime * 0.25;
+        // Idle floating oscillation
+        robot.position.y = Math.sin(elapsedTime * 1.5) * 0.08;
 
-        innerCore.rotation.x = -elapsedTime * 0.3;
-        innerCore.rotation.y = -elapsedTime * 0.2;
-
-        particleRing.rotation.y = elapsedTime * 0.1;
-        particleRing.rotation.z = elapsedTime * 0.05;
-
-        // Smooth Mouse Parallax Lerp
+        // Interactive Cursor Following
         targetX += (mouseX - targetX) * 0.05;
         targetY += (mouseY - targetY) * 0.05;
 
-        scene.rotation.y = targetX * 0.4;
-        scene.rotation.x = targetY * 0.4;
+        head.rotation.y = targetX * 0.6;
+        head.rotation.x = targetY * 0.4;
+
+        torso.rotation.y = targetX * 0.25;
+        ring.rotation.z = elapsedTime * 0.5;
 
         renderer.render(scene, camera);
     }
@@ -152,28 +172,26 @@ function init3DQuantumCore() {
 }
 
 /* --------------------------------------------------------------------------
-   2. 3D CARD TILT PHYSICS
+   2. INTERACTIVE PROMPT CHIPS (FUCH.AI STYLE QUICK AI ANSWERS)
    -------------------------------------------------------------------------- */
-function init3DCardPhysics() {
-    const cards = document.querySelectorAll('.project-card, .timeline-content, .skill-category-card');
+function initPromptChips() {
+    const chips = document.querySelectorAll('.prompt-chip');
+    const chatDrawer = document.getElementById('chat-drawer');
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const promptText = chip.getAttribute('data-prompt');
+            if (!promptText) return;
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = (centerY - y) / 16;
-            const rotateY = (x - centerX) / 16;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            // Open Chat Drawer & Send Prompt
+            if (chatDrawer) chatDrawer.classList.add('open');
+            
+            const chatInput = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('chat-send-btn');
+            if (chatInput && sendBtn) {
+                chatInput.value = promptText;
+                sendBtn.click();
+            }
         });
     });
 }
@@ -185,43 +203,17 @@ function initTypingEffect() {
     const el = document.getElementById('typing-text');
     if (!el) return;
 
-    const titles = [
-        "AI & ML Engineer",
-        "Generative AI Specialist",
-        "Multi-Agent RAG Architect",
-        "Vision-Language Model Fine-Tuner",
-        "Cloud MLOps Innovator"
-    ];
-
-    let titleIndex = 0;
+    const textToType = "i'm srujan — ai & ml engineer. ask me anything about my work.";
     let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
 
     function type() {
-        const currentTitle = titles[titleIndex];
-
-        if (isDeleting) {
-            el.textContent = currentTitle.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 40;
-        } else {
-            el.textContent = currentTitle.substring(0, charIndex + 1);
+        if (charIndex < textToType.length) {
+            el.textContent += textToType.charAt(charIndex);
             charIndex++;
-            typingSpeed = 90;
+            setTimeout(type, 40);
         }
-
-        if (!isDeleting && charIndex === currentTitle.length) {
-            typingSpeed = 2200; // Pause at full title
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            titleIndex = (titleIndex + 1) % titles.length;
-            typingSpeed = 400;
-        }
-
-        setTimeout(type, typingSpeed);
     }
+    el.textContent = "";
     type();
 }
 
@@ -229,15 +221,13 @@ function initTypingEffect() {
    4. PROJECT CATEGORY FILTERING & MODAL VIEWER
    -------------------------------------------------------------------------- */
 function initProjectFiltering() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterBtns = document.querySelectorAll('.filter-btn, .pill-nav-item');
     const projectCards = document.querySelectorAll('.project-card');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter').toLowerCase();
+            const filter = btn.getAttribute('data-filter')?.toLowerCase();
+            if (!filter) return;
 
             projectCards.forEach(card => {
                 const category = card.getAttribute('data-category').toLowerCase();
@@ -260,24 +250,24 @@ function openProjectModal(projectId) {
 
             const modalBody = document.getElementById('modal-body-content');
             modalBody.innerHTML = `
-                <div class="project-badge" style="margin-bottom: 14px; display: inline-block;">${project.category} • ${project.period}</div>
-                <h2 style="font-size: 2rem; margin-bottom: 14px;">${project.title}</h2>
-                <p style="color: var(--primary-cyan); font-weight: 600; margin-bottom: 22px; font-size: 1.05rem;">${project.tagline}</p>
-                <p style="color: var(--text-muted); margin-bottom: 26px; line-height: 1.8;">${project.description}</p>
+                <div class="project-badge" style="margin-bottom: 12px; display: inline-block;">${project.category} • ${project.period}</div>
+                <h2 style="font-size: 2rem; margin-bottom: 12px; color: var(--primary-dark);">${project.title}</h2>
+                <p style="color: var(--accent-teal); font-weight: 600; margin-bottom: 20px;">${project.tagline}</p>
+                <p style="color: var(--text-muted); margin-bottom: 24px; line-height: 1.7;">${project.description}</p>
                 
-                <h4 style="color: #FFF; margin-bottom: 14px; font-size: 1.15rem;">Key Architecture & Deliverables:</h4>
-                <ul style="list-style: none; margin-bottom: 28px;">
-                    ${project.features.map(f => `<li style="color: var(--text-muted); margin-bottom: 10px; position: relative; padding-left: 24px;"><span style="position: absolute; left: 0; color: var(--accent-emerald);">✓</span> ${f}</li>`).join('')}
+                <h4 style="color: var(--primary-dark); margin-bottom: 12px; font-size: 1.1rem;">Key Architecture & Deliverables:</h4>
+                <ul style="list-style: none; margin-bottom: 24px;">
+                    ${project.features.map(f => `<li style="color: var(--text-muted); margin-bottom: 8px; position: relative; padding-left: 20px;"><span style="position: absolute; left: 0; color: var(--accent-teal);">✓</span> ${f}</li>`).join('')}
                 </ul>
 
-                <h4 style="color: #FFF; margin-bottom: 14px; font-size: 1.15rem;">Tech Stack:</h4>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px;">
-                    ${project.tech_stack.map(t => `<span class="tech-tag" style="background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); color: var(--primary-cyan); font-size: 0.85rem; padding: 6px 14px;">${t}</span>`).join('')}
+                <h4 style="color: var(--primary-dark); margin-bottom: 12px; font-size: 1.1rem;">Tech Stack:</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
+                    ${project.tech_stack.map(t => `<span class="tech-tag" style="background: rgba(5, 168, 158, 0.1); border-color: rgba(5, 168, 158, 0.2); color: var(--accent-teal);">${t}</span>`).join('')}
                 </div>
 
                 <div style="display: flex; gap: 16px;">
-                    ${project.github !== '#' ? `<a href="${project.github}" target="_blank" class="btn-primary" style="padding: 12px 28px; font-size: 0.92rem;">View GitHub Repo</a>` : ''}
-                    <button onclick="closeModal()" class="btn-secondary" style="padding: 12px 28px; font-size: 0.92rem;">Close Window</button>
+                    ${project.github !== '#' ? `<a href="${project.github}" target="_blank" class="pill-nav-btn" style="padding: 10px 24px; font-size: 0.9rem;">View GitHub Repo</a>` : ''}
+                    <button onclick="closeModal()" class="prompt-chip" style="padding: 10px 24px; font-size: 0.9rem;">Close Window</button>
                 </div>
             `;
 
@@ -377,8 +367,8 @@ function initContactForm() {
         .then(res => res.json())
         .then(data => {
             statusDiv.textContent = data.message;
-            statusDiv.style.borderColor = 'var(--accent-emerald)';
-            statusDiv.style.color = 'var(--accent-emerald)';
+            statusDiv.style.borderColor = 'var(--accent-teal)';
+            statusDiv.style.color = 'var(--accent-teal)';
             form.reset();
         })
         .catch(() => {
@@ -392,13 +382,13 @@ function initContactForm() {
    -------------------------------------------------------------------------- */
 function initScrollSpy() {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.pill-nav-item');
 
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 150) {
+            if (pageYOffset >= sectionTop - 180) {
                 current = section.getAttribute('id');
             }
         });
