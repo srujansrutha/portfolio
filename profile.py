@@ -28,19 +28,20 @@ templates = Jinja2Templates(directory=templates_dir)
 PROFILE_DATA = {
     "name": "J Srujan Vishwakarma",
     "title": "AI Engineer",
-    "specialization": "Generative AI | Multi-Agent RAG | Vision-Language Models | Cloud MLOps",
+    "specialization": "Generative AI | LLMs | RAG | Agentic AI | MCP | VLM Fine-Tuning",
     "email": "srujansrutha01@gmail.com",
     "phone": "+91-9741021059",
     "location": "Bengaluru, India",
     "social": {
-        "linkedin": "https://linkedin.com/in/j-srujan-vishwakarma",
-        "github": "https://github.com/srujan-vishwakarma",
+        "linkedin": "https://linkedin.com/in/srujan-vishwakarma",
+        "github": "https://github.com/srujansrutha",
         "youtube": "https://youtube.com/@SruthasSnap"
     },
     "summary": (
-        "AI Engineer specializing in Generative AI, multi-agent RAG systems, Vision-Language Models, and scalable ML pipelines. "
-        "Experienced in ClickHouse migration, MCP-powered conversational analytics, multimodal model fine-tuning, and cloud-native "
-        "deployment using AWS, FastAPI, and modern LLM frameworks."
+        "AI Engineer with 1+ year building and deploying production LLM and Generative AI systems: RAG pipelines, multi-agent "
+        "workflows, MCP integrations, and fine-tuned vision-language models. Fine-tuned Qwen3-VL with QLoRA to 98% accuracy on a "
+        "held-out evaluation set and shipped an MCP-powered LLM analytics agent for business stakeholders. Works directly with "
+        "brand clients and communicates AI results to non-technical teams."
     ),
     "stats": [
         {"label": "B.E. CGPA", "value": "9.03", "suffix": "/10"},
@@ -49,25 +50,26 @@ PROFILE_DATA = {
         {"label": "YouTube Community", "value": "3K", "suffix": "+"}
     ],
     "skills": {
-        "languages": ["Python", "SQL", "Bash"],
+        "languages": ["Python", "SQL"],
         "ai_ml": [
-            "PyTorch", "Transformers", "scikit-learn", "LangChain", 
-            "LangGraph", "CrewAI", "Hugging Face", "FastAPI", "OpenCV"
+            "PyTorch", "TensorFlow", "scikit-learn", "Hugging Face", "LangChain",
+            "LangGraph", "CrewAI", "Pandas", "NumPy", "NLP", "Computer Vision"
         ],
         "generative_ai": [
-            "RAG (Retrieval-Augmented Generation)", "Multi-Agent Systems", 
-            "LLM Fine-Tuning", "Prompt Engineering", "Vector Search", 
-            "Multimodal AI", "MCP (Model Context Protocol)"
+            "LLMs", "RAG (Retrieval-Augmented Generation)", "Embeddings", "Vector Search",
+            "Agentic AI", "Multi-Agent Systems", "MCP (Model Context Protocol)",
+            "LLM & VLM Fine-Tuning (LoRA, QLoRA)", "Prompt Engineering", "LLM Evaluation",
+            "Guardrails", "OpenAI API"
         ],
         "cloud_mlops": [
-            "AWS (SageMaker, Bedrock, EC2, S3)", "Docker", 
-            "Apache Airflow", "ETL Pipelines", "Model Deployment"
+            "AWS (Bedrock, SageMaker, EC2, S3)", "GCP", "Docker", "CI/CD (GitHub Actions)",
+            "Apache Airflow", "FastAPI (REST APIs)", "Microservices"
         ],
         "databases": [
             "ClickHouse", "MongoDB", "MySQL", "Pinecone", "Qdrant", "Redis"
         ],
         "tools": [
-            "Ollama", "N8N", "ComfyUI", "Git", "Jupyter", "Linux"
+            "Ollama", "N8N", "ComfyUI", "Git", "Web Scraping", "Rapid Prototyping"
         ]
     },
     "experience": [
@@ -78,12 +80,12 @@ PROFILE_DATA = {
             "period": "Jul 2025 – Present",
             "is_current": True,
             "highlights": [
-                "Maintained and optimized large-scale fashion scraping pipelines, migrating workflows from MongoDB to ClickHouse to improve scalability and analytics performance.",
-                "Engineered ETL pipelines for structured and unstructured fashion datasets across distributed workflows.",
-                "Fine-tuned a Vision-Language Model (VLM) for apparel labeling and attribute classification workflows, achieving 98% accuracy.",
-                "Built and deployed an MCP-powered conversational analytics chatbot enabling natural language interaction with fashion datasets."
+                "Fine-tuned a vision-language model (Qwen3-VL) with QLoRA on ~340K products (1M+ images) for apparel and footwear attribute classification, reaching 98% accuracy on a held-out evaluation set, and integrated it into the ETL labeling workflow.",
+                "Built and deployed an MCP-powered LLM analytics agent, integrating the fashion-analytics data layer through an MCP server so business stakeholders can query datasets in natural language.",
+                "Migrated data workflows from MongoDB to ClickHouse, cutting analytical query time from ~6-7 s to ~1-2 s.",
+                "Automated large-scale web scraping and ETL pipelines covering 230 brands (130 apparel, 70 footwear, 30 marketplace) across structured and unstructured data."
             ],
-            "tech_tags": ["Vision-Language Models", "ClickHouse", "MCP", "ETL", "Python", "FastAPI"]
+            "tech_tags": ["Qwen3-VL", "QLoRA", "ClickHouse", "MCP", "ETL", "Web Scraping", "Python"]
         },
         {
             "company": "Ellucian",
@@ -92,22 +94,20 @@ PROFILE_DATA = {
             "period": "Jan 2025 – Apr 2025",
             "is_current": False,
             "highlights": [
-                "Built an AI-driven infrastructure cost optimization dashboard using AWS SageMaker, reducing cloud costs by 20%.",
-                "Designed a multi-agent recommendation system integrating multiple AWS services for intelligent resource optimization.",
-                "Boosted infrastructure utilization efficiency by 15% through predictive analytics workflows.",
-                "Fine-tuned an LLM-based code generation system for converting natural language prompts into executable code."
+                "Built an AI-driven cloud cost optimization dashboard on AWS SageMaker with predictive analytics, reducing costs by 20% and improving utilization by 15%.",
+                "Designed a multi-agent recommendation system integrating multiple AWS services for resource optimization.",
+                "Fine-tuned an LLM-based code generation system that converts natural-language prompts into executable code."
             ],
             "tech_tags": ["AWS SageMaker", "Multi-Agent Systems", "LLM Fine-Tuning", "Predictive Analytics"]
         },
         {
             "company": "CSIR4PI (NAL)",
             "location": "Bangalore",
-            "role": "AI Data Science Intern",
+            "role": "AI & Data Science Intern",
             "period": "Sep 2024 – Dec 2024",
             "is_current": False,
             "highlights": [
-                "Built a rainfall prediction model using 10+ years of CHIRPS climate datasets for environmental forecasting and climate pattern analysis.",
-                "Analyzed 10+ years of climatic data to identify environmental trends and actionable insights.",
+                "Built a machine learning rainfall forecasting model on 10+ years of CHIRPS climate data for climate-pattern analysis.",
                 "Developed preprocessing pipelines for large-scale environmental and geospatial datasets."
             ],
             "tech_tags": ["Climate Data", "Data Science", "Python", "Predictive Modeling", "Geospatial Data"]
@@ -123,84 +123,82 @@ PROFILE_DATA = {
     "projects": [
         {
             "id": "agentic-rag",
-            "title": "Agentic RAG Application",
+            "title": "Agentic ChatBot",
             "category": "GenAI & RAG",
-            "period": "2024 - 2025",
-            "tagline": "Microservices-based multi-agent retrieval platform with LangGraph & Qdrant",
+            "period": "GitHub",
+            "tagline": "LangGraph agent with ClickHouse/MongoDB tools, document + image RAG, memory and guardrails",
             "description": (
-                "Architected an enterprise-grade agentic RAG platform for low-latency contextual retrieval. "
-                "Utilizes LangGraph for autonomous retrieval, reasoning, and memory orchestration, coupled with vector search "
-                "and async web scraping agents."
+                "A LangGraph agent on FastAPI that queries ClickHouse and MongoDB tools to give business-friendly answers, "
+                "with RAG over PDF/DOCX and multimodal image RAG using CLIP."
             ),
-            "tech_stack": ["FastAPI", "LangGraph", "Qdrant", "Redis", "Ollama", "Docker", "LangChain"],
+            "tech_stack": ["FastAPI", "LangGraph", "LangChain", "Ollama", "Redis", "MongoDB", "ClickHouse", "CLIP", "Docker"],
             "features": [
-                "Architected a microservices-based RAG platform for low-latency contextual retrieval.",
-                "Implemented autonomous workflows using LangGraph for retrieval, reasoning, and memory orchestration.",
-                "Integrated Parallel Web Systems with LangChain-based agent workflows for asynchronous multi-source web research.",
-                "Designed scalable vector-search infrastructure enabling real-time context-aware responses."
+                "Built a LangGraph agent on FastAPI that queries ClickHouse and MongoDB tools for business-friendly answers.",
+                "Implemented RAG over PDF/DOCX with sentence-transformer embeddings, plus multimodal image RAG using CLIP.",
+                "Added short- and long-term memory via Redis conversation history and LangGraph SQLite checkpointing.",
+                "Added guardrails, token-based security, automated tests, an evaluation script, and Docker Compose deployment."
             ],
-            "github": "https://github.com/srujan-vishwakarma/agentic-rag",
+            "github": "https://github.com/srujansrutha/Agentic-Bot",
             "demo": "#",
             "badge": "Featured"
         },
         {
             "id": "wheat-detection",
-            "title": "Global Wheat Detection & Crop Analytics",
+            "title": "Global Wheat Detection",
             "category": "Computer Vision & LLM",
-            "period": "Intel AI for Youth Winner",
-            "tagline": "Real-time crop detection, quality assessment with fine-tuned LLaMA & advisory system",
+            "period": "Intel AI for Youth",
+            "tagline": "YOLO11 wheat detection with held-out-farm evaluation and a LoRA-tuned Qwen2.5 advisory model",
             "description": (
-                "Real-time computer vision system built for agricultural analytics. Combines YOLO crop object detection "
-                "with fine-tuned LLaMA transformers to deliver actionable AI-driven fertilizer and crop-health recommendations."
+                "Fine-tuned YOLO11s on 148K annotations (3.4K images, 7 farms) and evaluated it on held-out farms, paired with a "
+                "LoRA fine-tuned Qwen2.5-3B-Instruct that gives crop-quality and fertilizer advice."
             ),
-            "tech_stack": ["YOLO", "PyTorch", "OpenCV", "Transformers", "LLaMA", "FastAPI"],
+            "tech_stack": ["YOLO11", "PyTorch", "Ultralytics", "Qwen2.5", "LoRA/PEFT", "FastAPI"],
             "features": [
-                "Built a YOLO-based real-time wheat detection system using OpenCV and PyTorch.",
-                "Fine-tuned an LLaMA-based model using Hugging Face Transformers for crop-quality assessment.",
-                "Generated AI-driven fertilizer recommendations for agricultural decision support.",
-                "Built a web interface for crop image analysis and inference."
+                "Reached 0.945 mAP@50 in-domain and 0.890 on held-out farms.",
+                "Built a source-disjoint train/val/OOD split, tracing a 0.15 mAP@50-95 domain-shift gap to object scale and density.",
+                "LoRA fine-tuned Qwen2.5-3B-Instruct for crop-quality and fertilizer advice, served via a FastAPI inference endpoint."
             ],
-            "github": "https://github.com/srujan-vishwakarma/global-wheat-detection",
+            "github": "https://github.com/srujansrutha/GWD-workflow",
             "demo": "#",
-            "badge": "Award Winning"
+            "badge": "Computer Vision"
         },
         {
             "id": "mcp-fashion-analytics",
-            "title": "MCP Fashion Conversational Analytics",
+            "title": "MCP Fashion Analytics",
             "category": "GenAI & MLOps",
             "period": "TrendGully",
-            "tagline": "Natural language interaction for enterprise fashion datasets using Model Context Protocol",
+            "tagline": "Natural-language querying of fashion analytics data through an MCP server",
             "description": (
-                "Created an MCP-powered conversational agent enabling non-technical stakeholders to query multi-million "
-                "row fashion datasets in ClickHouse using natural language."
+                "An MCP-powered LLM analytics agent that integrates the fashion-analytics data layer through an MCP server, "
+                "so business stakeholders can query datasets in natural language."
             ),
-            "tech_stack": ["MCP Protocol", "ClickHouse", "FastAPI", "Python", "VLM", "MongoDB"],
+            "tech_stack": ["MCP", "ClickHouse", "MongoDB", "Python", "Qwen3-VL"],
             "features": [
-                "Integrated ClickHouse analytics DB for ultra-fast query execution over large-scale fashion datasets.",
-                "Implemented Model Context Protocol (MCP) tool bindings for seamless LLM context retrieval.",
-                "Fine-tuned VLM (98% accuracy) for automatic attribute labeling."
+                "Integrated the fashion-analytics data layer through an MCP server for LLM context retrieval.",
+                "Migrated MongoDB workflows to ClickHouse, cutting analytical query time from ~6-7 s to ~1-2 s.",
+                "Fine-tuned Qwen3-VL with QLoRA for attribute labeling: 98% accuracy on a held-out evaluation set."
             ],
-            "github": "https://github.com/srujan-vishwakarma/mcp-fashion-analytics",
+            "github": None,
             "demo": "#",
             "badge": "Production AI"
         },
         {
             "id": "cloud-cost-agent",
-            "title": "AWS Cloud Infrastructure Cost Optimization Agent",
+            "title": "AWS Cloud Cost Optimization Agent",
             "category": "MLOps & Cloud",
             "period": "Ellucian",
-            "tagline": "Multi-agent system reducing AWS cloud expenditure by 20% using SageMaker",
+            "tagline": "SageMaker predictive analytics and a multi-agent recommender, cutting cloud costs by 20%",
             "description": (
-                "Developed a multi-agent recommendation ecosystem leveraging AWS SageMaker to analyze resource utilization, "
-                "predict workload spikes, and automatically recommend right-sizing actions."
+                "An AI-driven cloud cost optimization dashboard on AWS SageMaker with predictive analytics, plus a multi-agent "
+                "recommendation system integrating multiple AWS services for resource optimization."
             ),
-            "tech_stack": ["AWS SageMaker", "AWS Bedrock", "Multi-Agent Systems", "Python", "Predictive ML"],
+            "tech_stack": ["AWS SageMaker", "AWS", "Multi-Agent Systems", "Python", "Predictive Analytics"],
             "features": [
-                "Reduced cloud infrastructure costs by 20% through predictive ML scheduling.",
-                "Designed multi-agent AWS service orchestrator.",
-                "Fine-tuned code generation model for infrastructure-as-code automation."
+                "Reduced cloud costs by 20% and improved utilization by 15% with predictive analytics.",
+                "Designed a multi-agent recommendation system integrating multiple AWS services.",
+                "Fine-tuned an LLM-based code generation system that converts natural-language prompts into executable code."
             ],
-            "github": "https://github.com/srujan-vishwakarma/aws-cost-agent",
+            "github": None,
             "demo": "#",
             "badge": "Enterprise"
         }
@@ -275,19 +273,20 @@ def _keyword_reply(msg: str) -> str:
     if any(k in msg for k in ["hello", "hi", "hey", "who are you"]):
         reply = (
             "Greetings! I am Srujan's Portfolio AI Assistant. "
-            "Srujan is an AI Engineer specializing in Generative AI, Multi-Agent RAG systems, Vision-Language Models, and Cloud MLOps. "
-            "Feel free to ask me about his work at TrendGully, Ellucian, projects like Agentic RAG, or his skills!"
+            "Srujan is an AI Engineer specializing in Generative AI, LLMs, RAG, Agentic AI, MCP, and VLM fine-tuning. "
+            "Feel free to ask me about his work at TrendGully, Ellucian, projects like the Agentic ChatBot, or his skills!"
         )
     elif any(k in msg for k in ["rag", "agentic", "langgraph", "vector"]):
         reply = (
-            "Srujan architected a cutting-edge Microservices Agentic RAG Application! "
-            "It uses LangGraph for autonomous reasoning and memory orchestration, Qdrant for vector search, Redis for caching, "
-            "Ollama for local LLMs, and LangChain agents for async multi-source web research."
+            "Srujan built an Agentic ChatBot: a LangGraph agent on FastAPI that queries ClickHouse and MongoDB tools, "
+            "with RAG over PDF/DOCX, multimodal image RAG using CLIP, Redis + SQLite-checkpointed memory, "
+            "guardrails, automated tests and Docker Compose deployment."
         )
     elif any(k in msg for k in ["vlm", "vision", "fashion", "trendgully", "accuracy"]):
         reply = (
-            "At TrendGully (Junior AI Engineer), Srujan fine-tuned a Vision-Language Model (VLM) for apparel labeling and attribute "
-            "classification, achieving an impressive 98% accuracy! He also migrated analytics to ClickHouse and built an MCP-powered conversational bot."
+            "At TrendGully (Junior AI Engineer), Srujan fine-tuned Qwen3-VL with QLoRA on ~340K products (1M+ images) for apparel "
+            "and footwear attribute classification, reaching 98% accuracy on a held-out set. He also migrated analytics from MongoDB "
+            "to ClickHouse (~6-7 s to ~1-2 s queries) and built an MCP-powered LLM analytics agent."
         )
     elif any(k in msg for k in ["ellucian", "aws", "cost", "cloud", "sagemaker"]):
         reply = (
@@ -296,16 +295,16 @@ def _keyword_reply(msg: str) -> str:
         )
     elif any(k in msg for k in ["wheat", "yolo", "intel", "hackathon"]):
         reply = (
-            "Srujan developed 'Global Wheat Detection' (Intel AI for Youth award-winning project). "
-            "It combines YOLO real-time computer vision, fine-tuned LLaMA models for crop quality assessment, and automated fertilizer recommendation."
+            "Srujan built 'Global Wheat Detection' (Intel AI for Youth). He fine-tuned YOLO11s to 0.945 mAP@50 in-domain and 0.890 "
+            "on held-out farms, and LoRA fine-tuned Qwen2.5-3B-Instruct for crop-quality and fertilizer advice, served via FastAPI."
         )
     elif any(k in msg for k in ["skills", "python", "tech stack", "tools"]):
         reply = (
             "Srujan's tech stack includes:\n"
             "• Languages: Python, SQL\n"
-            "• AI/ML: PyTorch, Transformers, LangChain, LangGraph, CrewAI, FastAPI\n"
-            "• GenAI: RAG, Multi-Agent Systems, Fine-tuning, Vector Search, MCP\n"
-            "• Databases & MLOps: ClickHouse, Qdrant, Redis, MongoDB, AWS (SageMaker, Bedrock), Docker"
+            "• AI/ML: PyTorch, TensorFlow, Hugging Face, LangChain, LangGraph, CrewAI, FastAPI\n"
+            "• GenAI: RAG, Agentic AI, Multi-Agent Systems, LoRA/QLoRA fine-tuning, Vector Search, MCP\n"
+            "• Databases & MLOps: ClickHouse, Qdrant, Redis, MongoDB, AWS (SageMaker, Bedrock), Docker, GitHub Actions"
         )
     elif any(k in msg for k in ["cgpa", "college", "education", "cmr"]):
         reply = (
@@ -322,7 +321,7 @@ def _keyword_reply(msg: str) -> str:
         )
     else:
         reply = (
-            f"Srujan Vishwakarma is an AI Engineer in Bangalore with strong expertise in Generative AI, RAG, and Cloud MLOps. "
+            f"Srujan Vishwakarma is an AI Engineer in Bangalore with 1+ year building production Generative AI, RAG, and agentic systems. "
             f"He has worked at TrendGully and Ellucian, built high-performance projects, and holds a 9.03 CGPA. "
             f"Try asking specifically about his 'RAG project', 'AWS experience', 'VLM work', or 'Skills'!"
         )
