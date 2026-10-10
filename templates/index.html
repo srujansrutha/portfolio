@@ -20,7 +20,7 @@
 
 <section id="hero" style="position:relative;min-height:100vh;overflow:hidden;background:#000;">
   <!-- Hero loop: "Tunnels made of forms with lines of red light" via Mixkit (Mixkit Stock Video Free License). Slowed 2x, seamless 6.7 s loop. -->
-  <video id="hero-video" src="/static/hero.mp4" poster="/static/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.92) contrast(1.05);"></video>
+  <video id="hero-video" src="{{ static_url('hero.mp4') }}" poster="{{ static_url('hero-poster.jpg') }}" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.92) contrast(1.05);"></video>
   <div style="position:absolute;inset:0;background:radial-gradient(95% 90% at 50% 45%, transparent 28%, rgba(0,0,0,0.88) 100%);pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0.97) 100%);pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(52% 40% at 50% 47%, rgba(0,0,0,0.55), transparent 78%);pointer-events:none;"></div>
@@ -35,15 +35,8 @@
     <div data-reveal="true" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#FF2E3A;">J Srujan Vishwakarma · AI Generalist</div>
     <h1 data-reveal="true" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6.6vw,78px);line-height:0.92;font-weight:700;letter-spacing:-0.03em;text-transform:uppercase;margin:0;color:#F5F8FC;max-width:15ch;text-shadow:3px 0 rgba(22,210,224,0.4),-3px 0 rgba(255,46,58,0.45),0 6px 44px rgba(0,0,0,0.92);">Pushing the limits of <span style="color:#FF2E3A;">AI development</span></h1>
     <div data-reveal="true" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
-      <a href="#work" data-magnetic="true" style="display:inline-flex;align-items:center;gap:9px;background:#FF2E3A;color:#fff;font-weight:700;font-size:14px;padding:14px 24px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;">▶ ROLL THE REEL</a>
+      <a href="/mlops" data-cut-page="MLOPS" data-magnetic="true" style="display:inline-flex;align-items:center;gap:9px;background:#FF2E3A;color:#fff;font-weight:700;font-size:14px;padding:14px 24px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;">▶ MLOPS PROJECTS</a>
       <button data-open-chat="true" data-magnetic="true" style="cursor:pointer;display:inline-flex;align-items:center;gap:9px;color:#EDEFF2;font-size:14px;padding:14px 24px;border:1px solid rgba(255,255,255,0.24);background:rgba(0,0,0,0.35);font-family:'JetBrains Mono',monospace;letter-spacing:1px;font-weight:700;">● OPEN COMMS</button>
-    </div>
-    <div data-reveal="true" style="width:100%;display:flex;justify-content:center;margin-top:6px;">
-      <a href="/mlops" data-cut-page="MLOPS" class="ml-callout" aria-label="MLOps projects: how I ship ML from data to production">
-        <span class="ml-callout__tag">MLOPS</span>
-        <span class="ml-callout__body"><span class="ml-callout__title">See how I ship ML to production</span><span class="ml-callout__flow">DATA<i>›</i>TRAIN<i>›</i>EVALUATE<i>›</i>DEPLOY<i>›</i>OPERATE</span></span>
-        <span class="ml-callout__go">→</span>
-      </a>
     </div>
   </div>
 
@@ -244,6 +237,6 @@
 
 {% include "_widgets.html" %}
 
-<script src="/static/js/main.js"></script>
+<script src="{{ static_url('js/main.js') }}"></script>
 </body>
 </html>

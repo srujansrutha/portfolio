@@ -1,3 +1,4 @@
+import hashlib
 import os
 import re
 from typing import Dict, List, Optional
@@ -13,14 +14,61 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Mount static directory if it exists
 static_dir = os.path.join(os.path.dirname(__file__), "static")
+
+
+class VersionedStaticFiles(StaticFiles):
+    """Static files with sane caching.
+
+    URLs built by static_url() carry a content fingerprint (?v=...), so they can be cached for a year: any
+    change to a file produces a new URL. Anything requested without a fingerprint is always revalidated, so a
+    browser can never keep serving an old stylesheet or script next to new HTML.
+    """
+
+    async def get_response(self, path, scope):
+        response = await super().get_response(path, scope)
+        if response.status_code in (200, 206, 304):
+            fingerprinted = b"v=" in scope.get("query_string", b"")
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable" if fingerprinted else "no-cache"
+        return response
+
+
+# Mount static directory if it exists
 if os.path.exists(static_dir):
-    app.mount("/static", StaticFiles(directory=static_dir), name="static")
+    app.mount("/static", VersionedStaticFiles(directory=static_dir), name="static")
 
 # Setup Jinja2 templates directory
 templates_dir = os.path.join(os.path.dirname(__file__), "templates")
 templates = Jinja2Templates(directory=templates_dir)
+
+_asset_versions = {}
+
+
+def static_url(path: str) -> str:
+    """URL for a file under /static with a content fingerprint, e.g. /static/css/style.css?v=3fa9c1d2e0."""
+    full = os.path.join(static_dir, path)
+    try:
+        mtime = os.path.getmtime(full)
+        cached = _asset_versions.get(path)
+        if not cached or cached[0] != mtime:
+            with open(full, "rb") as fh:
+                cached = (mtime, hashlib.sha256(fh.read()).hexdigest()[:10])
+            _asset_versions[path] = cached
+        return f"/static/{path}?v={cached[1]}"
+    except OSError:
+        return f"/static/{path}"
+
+
+templates.env.globals["static_url"] = static_url
+
+
+@app.middleware("http")
+async def revalidate_pages(request: Request, call_next):
+    """HTML and JSON are always revalidated so visitors never see a stale page."""
+    response = await call_next(request)
+    if response.headers.get("content-type", "").startswith(("text/html", "application/json")):
+        response.headers.setdefault("Cache-Control", "no-cache")
+    return response
 
 # ==========================================
 # RESUME & PORTFOLIO DATA (CENTRAL TRUTH)

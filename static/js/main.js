@@ -30,6 +30,7 @@
     var v = document.getElementById("hero-video");
     if (v) {
       v.muted = true; v.loop = true;
+      var userPaused = false;
       var play = function () { var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); };
       play();
       // the HUD's "PLAY" label is a real pause/play control for the background loop
@@ -39,9 +40,12 @@
           tog.textContent = v.paused ? "▮▮ PAUSED ▶" : "▶ PLAY ▮▮";
           tog.setAttribute("aria-label", v.paused ? "Play background video" : "Pause background video");
         };
-        tog.addEventListener("click", function () { if (v.paused) play(); else v.pause(); });
+        tog.addEventListener("click", function () { if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
         v.addEventListener("play", label); v.addEventListener("pause", label); label();
       }
+      // autoplay can be blocked (battery saver, strict browser settings): start on the first interaction instead
+      var kick = function () { if (v.paused && !userPaused) play(); };
+      ["pointerdown", "keydown", "touchstart", "scroll"].forEach(function (ev) { window.addEventListener(ev, kick, { once: true, passive: true }); });
     }
     var tc = document.querySelector("[data-timecode]");
     if (tc) {
