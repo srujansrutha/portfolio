@@ -5,64 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ profile.name }} — {{ profile.title }} · The Kumar Cut</title>
 <meta name="description" content="{{ profile.summary }}">
-<meta name="keywords" content="AI Engineer, ML Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, {{ profile.location }}">
+<meta name="keywords" content="AI Engineer, ML Engineer, Generative AI, LangGraph, RAG, Vision Language Models, ClickHouse, FastAPI, PyTorch, AWS MLOps, MLOps, CI/CD, Docker, {{ profile.location }}">
 <meta name="author" content="{{ profile.name }}">
 <meta property="og:title" content="{{ profile.name }} — {{ profile.title }}">
 <meta property="og:description" content="{{ profile.specialization }}">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+{% include "_head.html" %}
 </head>
 <body>
 
-<div data-scrub="true" style="position:fixed;top:0;left:0;height:3px;width:0;background:#FF2E3A;z-index:950;box-shadow:0 0 10px rgba(255,46,58,0.7);pointer-events:none;"></div>
-<div data-cut="true" style="position:fixed;inset:0;z-index:1400;pointer-events:none;opacity:0;background:#050506;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity 0.16s ease;">
-  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.05) 0 2px,transparent 2px 4px);opacity:0.5;"></div>
-  <div style="position:absolute;top:0;left:0;height:3px;width:0;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;" data-cut-bar="true"></div>
-  <div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:3px;color:#FF2E3A;position:relative;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 12px #FF2E3A;animation:pfblink 0.5s infinite;"></span>CUT TO</div>
-  <div data-cut-label="true" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,58px);text-transform:uppercase;color:#F3F6FB;letter-spacing:-0.02em;position:relative;text-shadow:2px 0 rgba(22,210,224,0.4),-2px 0 rgba(255,46,58,0.45);">SCENE</div>
-</div>
-<div style="position:fixed;top:0;left:0;width:100%;height:100px;background:linear-gradient(180deg,#000 32%,rgba(0,0,0,0) 100%);z-index:860;pointer-events:none;"></div>
-<div style="position:fixed;bottom:0;left:0;width:100%;height:100px;background:linear-gradient(0deg,#000 32%,rgba(0,0,0,0) 100%);z-index:860;pointer-events:none;"></div>
-<div style="position:fixed;inset:0;z-index:856;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0.3) 0px,rgba(0,0,0,0.3) 1px,transparent 1px,transparent 3px);opacity:0.5;"></div>
-<div data-grain="true" class="vhs-grain"></div>
-<div style="position:fixed;left:0;top:-20%;width:100%;height:130px;z-index:858;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.05),transparent);animation:vhsband 7s linear infinite;"></div>
-<div style="position:fixed;inset:0;z-index:854;pointer-events:none;background:radial-gradient(120% 95% at 50% 50%, transparent 44%, rgba(0,0,0,0.6) 100%);"></div>
+{% include "_overlays.html" %}
 
-<nav data-nav="true" style="position:fixed;top:0;left:0;width:100%;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:16px 40px;transition:background 0.3s,border-color 0.3s,backdrop-filter 0.3s;border-bottom:1px solid transparent;">
-  <a href="#hero" style="display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDEFF2;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;animation:pfblink 1.1s infinite;"></span>srujan<span style="color:#FF2E3A;">.ai</span></a>
-  <div style="display:flex;align-items:center;gap:2px;background:rgba(11,11,13,0.6);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(14px);padding:5px 6px;">
-    <a href="#work" data-navlink="work" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">01·WORK</a>
-    <a href="#experience" data-navlink="experience" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">02·RECORD</a>
-    <a href="#skills" data-navlink="skills" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">03·TOOLKIT</a>
-    <a href="#contact" data-navlink="contact" style="padding:8px 15px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:#8A93A3;">04·CONTACT</a>
-  </div>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <button data-open-palette="true" style="display:flex;align-items:center;gap:8px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A93A3;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:8px 12px;">SCENE SELECT <span style="border:1px solid rgba(255,255,255,0.22);padding:1px 6px;color:#EDEFF2;">⌘K</span></button>
-    <button data-open-chat="true" data-magnetic="true" style="cursor:pointer;background:#FF2E3A;color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:1px;border:none;padding:9px 16px;">● COMMS</button>
-  </div>
-</nav>
+{% include "_nav.html" %}
 
 <section id="hero" style="position:relative;min-height:100vh;overflow:hidden;background:#000;">
-  <video id="hero-video" src="/static/Rbthy.mp4" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;filter:brightness(0.8) contrast(1.5) saturate(0.6);"></video>
-  <div style="position:absolute;inset:0;background:radial-gradient(90% 85% at 50% 42%, transparent 16%, rgba(0,0,0,0.9) 100%);pointer-events:none;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.42) 45%, rgba(0,0,0,0.72) 78%, rgba(0,0,0,0.97) 100%);pointer-events:none;"></div>
+  <!-- Hero loop: "Tunnels made of forms with lines of red light" via Mixkit (Mixkit Stock Video Free License). Slowed 2x, seamless 6.7 s loop. -->
+  <video id="hero-video" src="/static/hero.mp4" poster="/static/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.92) contrast(1.05);"></video>
+  <div style="position:absolute;inset:0;background:radial-gradient(95% 90% at 50% 45%, transparent 28%, rgba(0,0,0,0.88) 100%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0.97) 100%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(52% 40% at 50% 47%, rgba(0,0,0,0.55), transparent 78%);pointer-events:none;"></div>
 
   <div style="position:absolute;top:96px;left:44px;z-index:4;display:flex;flex-direction:column;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#FF2E3A;">
     <div style="display:flex;align-items:center;gap:9px;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 12px #FF2E3A;animation:pfblink 1s infinite;"></span>● REC · SP</div>
-    <div style="color:#8a92a0;font-size:11px;letter-spacing:2px;">▶ PLAY ▮▮</div>
+    <button type="button" data-hero-toggle="true" aria-label="Pause background video" style="all:unset;cursor:pointer;color:#8a92a0;font-size:11px;letter-spacing:2px;transition:color 0.2s;" onmouseover="this.style.color='#EDEFF2'" onmouseout="this.style.color='#8a92a0'">▶ PLAY ▮▮</button>
   </div>
   <div style="position:absolute;top:96px;right:44px;z-index:4;text-align:right;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:2px;color:#EDEFF2;"><div data-timecode="true">00:00:00:00</div><div style="color:#8a92a0;font-size:11px;margin-top:6px;">ELAPSED · REC</div></div>
 
-  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 28px;z-index:3;gap:24px;">
-    <div data-reveal="true" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#FF2E3A;">J Srujan Vishwakarma · AI Engineer</div>
+  <div style="position:relative;z-index:3;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 28px 96px;gap:24px;">
+    <div data-reveal="true" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#FF2E3A;">J Srujan Vishwakarma · AI Generalist</div>
     <h1 data-reveal="true" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6.6vw,78px);line-height:0.92;font-weight:700;letter-spacing:-0.03em;text-transform:uppercase;margin:0;color:#F5F8FC;max-width:15ch;text-shadow:3px 0 rgba(22,210,224,0.4),-3px 0 rgba(255,46,58,0.45),0 6px 44px rgba(0,0,0,0.92);">Pushing the limits of <span style="color:#FF2E3A;">AI development</span></h1>
     <div data-reveal="true" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
       <a href="#work" data-magnetic="true" style="display:inline-flex;align-items:center;gap:9px;background:#FF2E3A;color:#fff;font-weight:700;font-size:14px;padding:14px 24px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;">▶ ROLL THE REEL</a>
       <button data-open-chat="true" data-magnetic="true" style="cursor:pointer;display:inline-flex;align-items:center;gap:9px;color:#EDEFF2;font-size:14px;padding:14px 24px;border:1px solid rgba(255,255,255,0.24);background:rgba(0,0,0,0.35);font-family:'JetBrains Mono',monospace;letter-spacing:1px;font-weight:700;">● OPEN COMMS</button>
+    </div>
+    <div data-reveal="true" style="width:100%;display:flex;justify-content:center;margin-top:6px;">
+      <a href="/mlops" data-cut-page="MLOPS" class="ml-callout" aria-label="MLOps projects: how I ship ML from data to production">
+        <span class="ml-callout__tag">MLOPS</span>
+        <span class="ml-callout__body"><span class="ml-callout__title">See how I ship ML to production</span><span class="ml-callout__flow">DATA<i>›</i>TRAIN<i>›</i>EVALUATE<i>›</i>DEPLOY<i>›</i>OPERATE</span></span>
+        <span class="ml-callout__go">→</span>
+      </a>
     </div>
   </div>
 
@@ -137,6 +118,16 @@
           <div style="display:flex;align-items:center;gap:8px;color:#EDEFF2;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:1px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">OPEN CASE FILE →</div>
         </div>
       </div>
+    </div>
+    <div data-reveal="true" style="margin-top:28px;">
+      <a href="/mlops" data-cut-page="MLOPS" class="ml-band">
+        <span class="ml-band__txt">
+          <span class="ml-band__k">MLOPS · THE PIPELINE BEHIND THE MODELS</span>
+          <span class="ml-band__h">From raw data to production — and keeping it there.</span>
+          <span class="ml-band__p">CI on GitHub Actions, Docker Compose, ClickHouse and SageMaker cost control: six projects mapped across the ML lifecycle.</span>
+        </span>
+        <span class="ml-band__btn">▶ OPEN MLOPS PROJECTS</span>
+      </a>
     </div>
   </div>
 </section>
@@ -249,39 +240,9 @@
   </div>
 </section>
 
-<footer style="padding:32px 40px;border-top:1px solid rgba(255,46,58,0.25);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;max-width:1200px;margin:0 auto;">
-  <div style="color:#6b7688;font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;">© 2026 J SRUJAN VISHWAKARMA · <span style="color:#FF2E3A;">THAT'S A WRAP.</span></div>
-  <div style="display:flex;gap:22px;font-size:12px;font-family:'JetBrains Mono',monospace;">
-    <a href="https://github.com/srujansrutha" target="_blank" style="color:#96A0B0;">GITHUB</a>
-    <a href="https://linkedin.com/in/srujan-vishwakarma" target="_blank" style="color:#96A0B0;">LINKEDIN</a>
-    <a href="https://youtube.com/@SruthasSnap" target="_blank" style="color:#96A0B0;">YOUTUBE</a>
-  </div>
-</footer>
+{% include "_footer.html" %}
 
-<button data-open-chat="true" data-magnetic="true" style="position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#FF2E3A;border:none;color:#fff;font-size:16px;font-family:'JetBrains Mono',monospace;font-weight:700;cursor:pointer;z-index:1500;box-shadow:0 12px 34px rgba(255,46,58,0.45);">●</button>
-
-<div data-chat-drawer="true" style="position:fixed;bottom:96px;right:28px;width:400px;max-width:calc(100vw - 40px);height:560px;max-height:calc(100vh - 130px);background:rgba(8,8,10,0.97);backdrop-filter:blur(24px);border:1px solid rgba(255,46,58,0.3);z-index:1500;display:flex;flex-direction:column;box-shadow:0 30px 70px rgba(0,0,0,0.7);opacity:0;pointer-events:none;transform:translateY(16px) scale(0.98);transition:opacity 0.3s,transform 0.3s;overflow:hidden;">
-  <div style="padding:16px 20px;border-bottom:1px solid rgba(255,46,58,0.25);display:flex;justify-content:space-between;align-items:center;"><div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:1px;color:#F3F6FB;"><span style="width:9px;height:9px;border-radius:50%;background:#FF2E3A;box-shadow:0 0 10px #FF2E3A;animation:pfblink 1s infinite;"></span>COMMS · LIVE FEED</div><button data-close-chat="true" style="background:none;border:none;color:#8A93A3;font-size:18px;cursor:pointer;">✕</button></div>
-  <div data-chat-messages="true" class="pf-scroll" style="flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;">
-    <div style="max-width:88%;padding:13px 16px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:#D7DEE8;font-size:14px;line-height:1.55;align-self:flex-start;">COMMS online. Ask me anything about Srujan's work, projects or skills.</div>
-    <div style="display:flex;flex-wrap:wrap;gap:7px;"><button data-suggest="What has Srujan built?" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B9C4D4;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;">› what has he built?</button><button data-suggest="Tell me about his Agentic ChatBot" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B9C4D4;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;">› agentic chatbot</button><button data-suggest="What is his biggest technical impact?" style="cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B9C4D4;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;">› biggest impact?</button></div>
-  </div>
-  <div style="padding:14px 18px;border-top:1px solid rgba(255,46,58,0.25);display:flex;gap:10px;"><input data-chat-input="true" type="text" placeholder="transmit…" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:11px 16px;color:#EDEFF2;font-size:14px;outline:none;"><button data-chat-send="true" style="background:#FF2E3A;border:none;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;">➔</button></div>
-</div>
-
-<div data-modal-overlay="true" style="position:fixed;inset:0;background:rgba(2,2,4,0.8);backdrop-filter:blur(10px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.3s;">
-  <div class="pf-scroll" style="background:#0b0b0d;border:1px solid rgba(255,46,58,0.3);max-width:680px;width:100%;max-height:86vh;overflow-y:auto;padding:40px;position:relative;box-shadow:0 40px 90px rgba(0,0,0,0.7);">
-    <button data-close-modal="true" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#8A93A3;width:34px;height:34px;font-size:15px;cursor:pointer;">✕</button>
-    <div data-modal-body="true"></div>
-  </div>
-</div>
-
-<div data-palette-overlay="true" style="position:fixed;inset:0;background:rgba(2,2,4,0.7);backdrop-filter:blur(8px);z-index:2500;display:flex;align-items:flex-start;justify-content:center;padding-top:14vh;opacity:0;pointer-events:none;transition:opacity 0.2s;">
-  <div style="width:560px;max-width:calc(100vw - 40px);background:#0b0b0d;border:1px solid rgba(255,46,58,0.3);overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,0.7);">
-    <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,46,58,0.25);"><span style="color:#FF2E3A;font-family:'JetBrains Mono',monospace;">▶</span><input data-palette-input="true" type="text" placeholder="Scene select — jump anywhere…" style="flex:1;background:none;border:none;color:#EDEFF2;font-size:15px;outline:none;font-family:'JetBrains Mono',monospace;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5b6576;border:1px solid rgba(255,255,255,0.15);padding:2px 7px;">ESC</span></div>
-    <div data-palette-list="true" class="pf-scroll" style="max-height:340px;overflow-y:auto;padding:8px;"></div>
-  </div>
-</div>
+{% include "_widgets.html" %}
 
 <script src="/static/js/main.js"></script>
 </body>

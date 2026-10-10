@@ -212,6 +212,180 @@ PROFILE_DATA = {
     ]
 }
 
+# ==========================================
+# MLOPS SHOWCASE (served at /mlops and /api/mlops)
+# Every claim here comes from the resume or from the public repos linked below
+# (srujansrutha/GWD-workflow: .github/workflows/ci.yml, docker/, compose*.yaml, README; srujansrutha/Agentic-Bot).
+# ==========================================
+MLOPS_DATA = {
+    "meta_description": (
+        "MLOps projects by J Srujan Vishwakarma: VLM fine-tuning pipelines, a ClickHouse data platform, an MCP analytics agent, "
+        "SageMaker cost optimization, plus CI/CD and Docker-based deployment, mapped across the ML lifecycle."
+    ),
+    "eyebrow": "MLOps · Production ML",
+    "headline": "Models in production,",
+    "headline_accent": "not just notebooks.",
+    "summary": (
+        "Data pipelines, fine-tuning, evaluation, deployment and cloud cost control: the full ML lifecycle, "
+        "shipped at TrendGully and Ellucian and in my own open-source projects."
+    ),
+    "stages": [
+        {"id": "data", "label": "Data", "blurb": "Scraping, ETL and a fast analytics store."},
+        {"id": "train", "label": "Train", "blurb": "LoRA / QLoRA fine-tuning of VLMs, LLMs and detectors."},
+        {"id": "evaluate", "label": "Evaluate", "blurb": "Held-out and unseen-domain splits, eval scripts, tests."},
+        {"id": "deploy", "label": "Deploy", "blurb": "Docker, FastAPI, MCP servers, CI on GitHub Actions."},
+        {"id": "operate", "label": "Operate", "blurb": "Guardrails, memory and cloud cost control on AWS."},
+    ],
+    "pipeline_log": [
+        {"stage": "data", "text": "230 brands · ETL · MongoDB → ClickHouse", "state": "ok"},
+        {"stage": "train", "text": "Qwen3-VL · QLoRA · ~340K products, 1M+ images", "state": "ok"},
+        {"stage": "evaluate", "text": "98% on a held-out set · unseen-farm splits", "state": "ok"},
+        {"stage": "deploy", "text": "Docker Compose · FastAPI · MCP · CI/CD", "state": "ok"},
+        {"stage": "operate", "text": "SageMaker · cost -20% · utilization +15%", "state": "run"},
+    ],
+    "stats": [
+        {"value": "98", "suffix": "%", "label": "VLM accuracy on a held-out set", "count": True},
+        {"value": "230", "suffix": "", "label": "brands in scraping + ETL pipelines", "count": True},
+        {"value": "1–2", "suffix": "s", "label": "analytics queries, down from ~6–7 s", "count": False},
+        {"value": "20", "suffix": "%", "label": "cloud cost cut on AWS (utilization +15%)", "count": True},
+    ],
+    "projects": [
+        {
+            "id": "wheat-advisor-ci",
+            "featured": True,
+            "title": "Wheat Advisor: CI, containers and honest evaluation",
+            "kicker": "FLAGSHIP · OPEN SOURCE",
+            "org": "GitHub · Intel AI for Youth",
+            "stages": ["train", "evaluate", "deploy"],
+            "summary": (
+                "A YOLO11 wheat-head detector plus a LangGraph field-report workflow, packaged so anyone can run it: "
+                "every push is linted, tested and built into a Docker image that has to pass a live health check."
+            ),
+            "bullets": [
+                "GitHub Actions on every push: ruff lint, pytest, Docker image build and a live health check.",
+                "116 automated tests that need no GPU, network or language model.",
+                "Docker Compose runs the app and a local LLM as separate containers, with a CPU/GPU overlay; weights are mounted, not baked into the image.",
+                "Farm-level held-out evaluation: adding diverse farms doubled the unseen-farm score (0.149 → 0.301 mAP@50-95) with the same small model.",
+            ],
+            "ci_steps": [
+                "ruff lint",
+                "pytest · 116 tests",
+                "compose config · CPU + GPU",
+                "build app image",
+                "start app + health check",
+                "import smoke test",
+            ],
+            "stack": ["YOLO11", "LangGraph", "Docker Compose", "GitHub Actions", "pytest", "Ollama"],
+            "github": "https://github.com/srujansrutha/GWD-workflow",
+            "ci_url": "https://github.com/srujansrutha/GWD-workflow/actions/workflows/ci.yml",
+        },
+        {
+            "id": "agentic-chatbot-ops",
+            "featured": False,
+            "title": "Agentic ChatBot: guardrails, tests and containers",
+            "kicker": "OPEN SOURCE",
+            "org": "GitHub",
+            "stages": ["evaluate", "deploy", "operate"],
+            "summary": (
+                "A LangGraph agent on FastAPI that queries ClickHouse and MongoDB tools, built to be operated: "
+                "guarded, tested, evaluated and containerised."
+            ),
+            "bullets": [
+                "Guardrails and token-based security in front of the agent.",
+                "Automated tests plus an evaluation script.",
+                "Redis conversation history and LangGraph SQLite checkpointing for short- and long-term memory.",
+                "Dockerfile and Docker Compose deployment.",
+            ],
+            "stack": ["FastAPI", "LangGraph", "Docker Compose", "Redis", "ClickHouse", "MongoDB"],
+            "github": "https://github.com/srujansrutha/Agentic-Bot",
+        },
+        {
+            "id": "vlm-labeling-pipeline",
+            "featured": False,
+            "title": "VLM attribute-labeling pipeline",
+            "kicker": "PRODUCTION",
+            "org": "TrendGully",
+            "stages": ["train", "evaluate", "deploy"],
+            "summary": "Fine-tuned Qwen3-VL with QLoRA to label apparel and footwear attributes, then wired it into production ETL.",
+            "bullets": [
+                "98% accuracy on a held-out evaluation set.",
+                "Trained on ~340K products (1M+ images).",
+                "Integrated into the ETL labeling workflow.",
+            ],
+            "stack": ["Qwen3-VL", "QLoRA", "ETL"],
+            "github": None,
+        },
+        {
+            "id": "fashion-data-platform",
+            "featured": False,
+            "title": "Fashion data platform: ETL and ClickHouse",
+            "kicker": "PRODUCTION",
+            "org": "TrendGully",
+            "stages": ["data"],
+            "summary": "Automated scraping and ETL for 230 brands and moved analytical workloads from MongoDB to ClickHouse.",
+            "bullets": [
+                "Analytical queries cut from ~6–7 s to ~1–2 s.",
+                "230 brands: 130 apparel, 70 footwear, 30 marketplace.",
+                "Structured and unstructured data handled in the same pipelines.",
+            ],
+            "stack": ["ClickHouse", "MongoDB", "ETL", "Web Scraping", "Python"],
+            "github": None,
+        },
+        {
+            "id": "mcp-analytics-agent",
+            "featured": False,
+            "title": "MCP analytics agent",
+            "kicker": "PRODUCTION",
+            "org": "TrendGully",
+            "stages": ["deploy", "operate"],
+            "summary": (
+                "An MCP server exposes the fashion-analytics data layer to an LLM agent, "
+                "so business stakeholders can query datasets in natural language."
+            ),
+            "bullets": [
+                "Built and deployed for business stakeholders.",
+                "Fashion-analytics data layer integrated through an MCP server.",
+            ],
+            "stack": ["MCP", "LLM agent"],
+            "github": None,
+        },
+        {
+            "id": "cloud-cost-optimization",
+            "featured": False,
+            "title": "Cloud cost optimization on SageMaker",
+            "kicker": "ENTERPRISE · INTERNSHIP",
+            "org": "Ellucian",
+            "stages": ["operate"],
+            "summary": (
+                "An AI-driven cost optimization dashboard on AWS SageMaker with predictive analytics, "
+                "plus a multi-agent recommender spanning several AWS services."
+            ),
+            "bullets": [
+                "Cloud costs down 20%.",
+                "Resource utilization up 15%.",
+                "Multi-agent recommendation system integrating multiple AWS services.",
+            ],
+            "stack": ["AWS SageMaker", "Multi-Agent", "Predictive Analytics"],
+            "github": None,
+            "wide": True,
+            "metrics": [
+                {"value": "−20%", "label": "cloud cost"},
+                {"value": "+15%", "label": "resource utilization"},
+            ],
+        },
+    ],
+    "toolkit": [
+        {"group": "SHIP", "items": ["Docker", "Docker Compose", "CI/CD (GitHub Actions)", "Git", "FastAPI (REST APIs)", "Microservices"]},
+        {"group": "ORCHESTRATE", "items": ["Apache Airflow", "N8N", "MCP servers"]},
+        {"group": "CLOUD", "items": ["AWS SageMaker", "AWS Bedrock", "EC2", "S3", "GCP"]},
+        {"group": "DATA", "items": ["ClickHouse", "MongoDB", "MySQL", "Redis", "Qdrant", "Pinecone"]},
+        {"group": "QUALITY", "items": ["LLM Evaluation", "Guardrails", "Automated tests", "Held-out / OOD splits"]},
+        {"group": "MODELS", "items": ["LoRA / QLoRA", "Hugging Face", "PyTorch", "Ollama"]},
+    ],
+}
+for _stage in MLOPS_DATA["stages"]:
+    _stage["count"] = sum(1 for _p in MLOPS_DATA["projects"] if _stage["id"] in _p["stages"])
+
 try:
     from pydantic import EmailStr
 except ImportError:
@@ -236,10 +410,20 @@ async def read_root(request: Request):
     """Serves the main interactive portfolio page."""
     return templates.TemplateResponse(request=request, name="index.html", context={"profile": PROFILE_DATA})
 
+@app.get("/mlops", response_class=HTMLResponse)
+async def read_mlops(request: Request):
+    """Serves the MLOps projects page."""
+    return templates.TemplateResponse(request=request, name="mlops.html", context={"profile": PROFILE_DATA, "mlops": MLOPS_DATA})
+
 @app.get("/api/profile")
 async def get_profile_json():
     """Returns complete raw JSON profile data."""
     return JSONResponse(content=PROFILE_DATA)
+
+@app.get("/api/mlops")
+async def get_mlops_json():
+    """Returns the MLOps showcase data (stages, stats, projects, toolkit)."""
+    return JSONResponse(content=MLOPS_DATA)
 
 @app.get("/api/projects")
 async def get_projects(category: Optional[str] = None):
@@ -270,7 +454,14 @@ async def handle_contact(contact: ContactMessage):
 
 def _keyword_reply(msg: str) -> str:
     """Fallback keyword responder used when no LLM API key is configured."""
-    if any(k in msg for k in ["hello", "hi", "hey", "who are you"]):
+    if any(k in msg for k in ["mlops", "ci/cd", "devops", "production ml"]):
+        reply = (
+            "Srujan's MLOps work spans the whole ML lifecycle: scraping + ETL for 230 brands and a MongoDB to ClickHouse migration "
+            "(queries ~6-7 s to ~1-2 s), Qwen3-VL QLoRA fine-tuning at 98% held-out accuracy, an MCP analytics agent in production, "
+            "AWS SageMaker cost optimization (-20% cost), and open-source repos with GitHub Actions CI, Docker Compose and automated tests. "
+            "See the full breakdown at /mlops."
+        )
+    elif any(k in msg for k in ["hello", "hi", "hey", "who are you"]):
         reply = (
             "Greetings! I am Srujan's Portfolio AI Assistant. "
             "Srujan is an AI Engineer specializing in Generative AI, LLMs, RAG, Agentic AI, MCP, and VLM fine-tuning. "
@@ -349,6 +540,8 @@ async def ai_chat_assistant(query: ChatQuery):
                 + " | ".join(f"{e['company']} - {e['role']} ({e['period']})" for e in PROFILE_DATA['experience'])
                 + ". Projects: "
                 + " | ".join(f"{p['title']}: {p['tagline']}" for p in PROFILE_DATA['projects'])
+                + ". MLOps projects (full page at /mlops): "
+                + " | ".join(f"{p['title']} ({p['org']}; stages: {', '.join(p['stages'])})" for p in MLOPS_DATA['projects'])
                 + ". If asked something unrelated to Srujan, gently redirect to his work. Never invent facts beyond these."
             )
             resp = client.messages.create(

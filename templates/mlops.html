@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MLOps Projects — {{ profile.name }}</title>
+<meta name="description" content="{{ mlops.meta_description }}">
+<meta name="keywords" content="MLOps, CI/CD, Docker, GitHub Actions, AWS SageMaker, ClickHouse, MCP, LLM fine-tuning, QLoRA, {{ profile.location }}">
+<meta name="author" content="{{ profile.name }}">
+<meta property="og:title" content="MLOps Projects — {{ profile.name }}">
+<meta property="og:description" content="{{ mlops.meta_description }}">
+<meta property="og:type" content="website">
+{% include "_head.html" %}
+</head>
+<body>
+
+{% include "_overlays.html" %}
+{% with base="/", active="mlops" %}{% include "_nav.html" %}{% endwith %}
+
+<section id="top" class="ml-hero">
+  <div class="ml-hero__in">
+    <div>
+      <div class="ml-eyebrow" data-reveal="true"><i></i>{{ mlops.eyebrow }}</div>
+      <h1 class="ml-h1" data-reveal="true">{{ mlops.headline }} <em>{{ mlops.headline_accent }}</em></h1>
+      <p class="ml-lede" data-reveal="true">{{ mlops.summary }}</p>
+      <div class="ml-btns" data-reveal="true">
+        <a class="ml-btn ml-btn--primary" href="#projects" data-magnetic="true">▶ SEE THE PROJECTS</a>
+        <a class="ml-btn" href="mailto:{{ profile.email }}?subject=MLOps%20role" data-magnetic="true">● HIRE FOR MLOPS</a>
+      </div>
+    </div>
+    <div class="ml-term" data-reveal="true" aria-label="Pipeline summary">
+      <div class="ml-term__bar"><span><b>●</b> PIPELINE · srujan/mlops</span><span>RUN #01 · ALL STAGES</span></div>
+      <div class="ml-term__body">
+        <div class="ml-term__cmd"><b>$</b>pipeline run --all</div>
+        {% for step in mlops.pipeline_log %}
+        <div class="ml-log" style="--i:{{ loop.index0 }}"><span class="{{ 'ok' if step.state == 'ok' else 'run' }}">{{ '✔' if step.state == 'ok' else '●' }}</span><span class="st">{{ step.stage | upper }}</span><span>{{ step.text }}</span></div>
+        {% endfor %}
+        <div class="ml-term__cmd" style="margin-top:16px"><b>$</b><span class="ml-cursor">▌</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ml-stats" aria-label="MLOps highlights">
+  <div class="ml-stats__in" data-reveal="true">
+    {% for s in mlops.stats %}
+    <div class="ml-stat"><div class="ml-stat__v">{% if s.count %}<span data-count="true" data-target="{{ s.value }}">0</span>{% else %}{{ s.value }}{% endif %}<small>{{ s.suffix }}</small></div><div class="ml-stat__l">{{ s.label }}</div></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="projects" class="ml-sec">
+  <div class="ml-wrap">
+    <div class="ml-sechead" data-reveal="true">
+      <div class="ml-secrow"><span class="ml-tag">SCENE 01</span><div class="ml-stripe"></div><span class="ml-tc">TC 00:03:21 · TAKE 01</span></div>
+      <h2 class="ml-h2">The Pipeline.</h2>
+      <p class="ml-sub">{{ mlops.projects | length }} projects mapped across the ML lifecycle. Pick a stage to filter.</p>
+    </div>
+
+    <div class="ml-stages" role="group" aria-label="Filter projects by pipeline stage" data-reveal="true">
+      <button type="button" class="ml-stage is-active" data-stage-filter="all" aria-pressed="true">
+        <span class="ml-stage__n"><span>00</span><span>{{ mlops.projects | length }}</span></span>
+        <span class="ml-stage__l">All</span>
+        <span class="ml-stage__b">The full lifecycle.</span>
+      </button>
+      {% for st in mlops.stages %}
+      <button type="button" class="ml-stage" data-stage-filter="{{ st.id }}" aria-pressed="false">
+        <span class="ml-stage__n"><span>0{{ loop.index }}</span><span>{{ st.count }}</span></span>
+        <span class="ml-stage__l">{{ st.label }}</span>
+        <span class="ml-stage__b">{{ st.blurb }}</span>
+      </button>
+      {% endfor %}
+    </div>
+    <p class="ml-count" data-ml-count="true" aria-live="polite">SHOWING {{ mlops.projects | length }} OF {{ mlops.projects | length }}</p>
+
+    <div class="ml-grid">
+      {% for p in mlops.projects %}
+      <div class="ml-cell{% if p.featured or p.wide %} ml-cell--full{% endif %}" data-reveal="true" data-stages="{{ p.stages | join(' ') }}">
+        <article class="ml-card{% if p.featured or p.wide %} ml-card--split{% endif %}{% if p.featured %} ml-card--feat{% endif %}" id="{{ p.id }}">
+          <div class="ml-card__main">
+            <div class="ml-card__top"><span class="ml-kicker">{{ p.kicker }}</span><span class="ml-org">{{ p.org }}</span></div>
+            <h3>{{ p.title }}</h3>
+            <div class="ml-stagechips">{% for s in p.stages %}<span class="ml-chip-stage">{{ s | upper }}</span>{% endfor %}</div>
+            <p class="ml-sum">{{ p.summary }}</p>
+            <ul class="ml-ul">{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+            <div class="ml-stack">{% for t in p.stack %}<span>{{ t }}</span>{% endfor %}</div>
+            <div class="ml-links">
+              {% if p.github %}<a class="ml-link" href="{{ p.github }}" target="_blank" rel="noopener">VIEW REPO →</a>{% else %}<span class="ml-note">SOURCE NOT PUBLIC · EMPLOYER WORK</span>{% endif %}
+              {% if p.ci_url %}<a class="ml-link" href="{{ p.ci_url }}" target="_blank" rel="noopener">VIEW CI WORKFLOW →</a>{% endif %}
+            </div>
+          </div>
+          {% if p.ci_steps %}
+          <aside class="ml-ci" aria-label="CI pipeline steps">
+            <div class="ml-ci__h">CI · GITHUB ACTIONS · EVERY PUSH</div>
+            <ol>{% for step in p.ci_steps %}<li>{{ step }}</li>{% endfor %}</ol>
+          </aside>
+          {% elif p.metrics %}
+          <aside class="ml-metrics" aria-label="Key results">
+            {% for m in p.metrics %}<div class="ml-metric"><div class="ml-metric__v">{{ m.value }}</div><div class="ml-metric__l">{{ m.label }}</div></div>{% endfor %}
+          </aside>
+          {% endif %}
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="stack" class="ml-sec" style="padding-top:20px;">
+  <div class="ml-wrap">
+    <div class="ml-sechead" data-reveal="true">
+      <div class="ml-secrow"><span class="ml-tag">SCENE 02</span><div class="ml-stripe"></div><span class="ml-tc">TC 00:07:48 · TAKE 01</span></div>
+      <h2 class="ml-h2">The Stack.</h2>
+      <p class="ml-sub">The tooling behind the pipeline, grouped by the job it does.</p>
+    </div>
+    <div class="ml-tools" data-reveal="true">
+      {% for g in mlops.toolkit %}
+      <div class="ml-tool"><div class="ml-tool__h">CH.0{{ loop.index }} · {{ g.group }}</div><div class="ml-tool__c">{% for i in g['items'] %}<span>{{ i }}</span>{% endfor %}</div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="hire" class="ml-sec" style="padding-top:20px;border-top:1px solid rgba(255,46,58,.25);">
+  <div class="ml-wrap" style="padding-top:80px;">
+    <div class="ml-cta" data-reveal="true">
+      <div>
+        <div class="ml-cta__k">Open to MLOps &amp; AI engineering roles</div>
+        <h2 class="ml-cta__h">Need ML that ships and stays up?</h2>
+        <p class="ml-cta__p">Let's talk about getting your models from notebook to production. I reply fast.</p>
+      </div>
+      <div class="ml-btns">
+        <a class="ml-btn ml-btn--primary" href="mailto:{{ profile.email }}?subject=MLOps%20role" data-magnetic="true">▶ EMAIL ME</a>
+        <a class="ml-btn" href="{{ profile.social.linkedin }}" target="_blank" rel="noopener">in LINKEDIN</a>
+        <a class="ml-btn" href="/" data-cut-page="PORTFOLIO">← PORTFOLIO</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "_footer.html" %}
+
+{% include "_widgets.html" %}
+
+<script src="/static/js/main.js"></script>
+<script src="/static/js/mlops.js"></script>
+</body>
+</html>

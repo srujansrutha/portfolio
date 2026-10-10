@@ -22,22 +22,26 @@
     initModal();
     initPalette();
     initContact();
+    initPageCuts();
   });
 
-  /* ---------- hero video: silhouette segment loop + elapsed timer ---------- */
+  /* ---------- hero video: seamless background loop + elapsed timer ---------- */
   function initHeroVideo() {
     var v = document.getElementById("hero-video");
     if (v) {
-      v.style.filter = "brightness(0.8) contrast(1.5) saturate(0.6)";
-      var SEG_IN = 12.6, SEG_OUT = 19.4;   // clean silhouette segment only — skips text + wife shots
-      v.loop = false;
-      var onMeta = function () { try { v.currentTime = SEG_IN; } catch (e) {} };
-      if (v.readyState >= 1) onMeta(); else v.addEventListener("loadedmetadata", onMeta);
-      v.addEventListener("timeupdate", function () {
-        if (v.currentTime >= SEG_OUT || v.currentTime < SEG_IN - 0.3) v.currentTime = SEG_IN;
-      });
-      var p = v.play && v.play();
-      if (p && p.catch) p.catch(function () {});
+      v.muted = true; v.loop = true;
+      var play = function () { var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); };
+      play();
+      // the HUD's "PLAY" label is a real pause/play control for the background loop
+      var tog = document.querySelector("[data-hero-toggle]");
+      if (tog) {
+        var label = function () {
+          tog.textContent = v.paused ? "▮▮ PAUSED ▶" : "▶ PLAY ▮▮";
+          tog.setAttribute("aria-label", v.paused ? "Play background video" : "Pause background video");
+        };
+        tog.addEventListener("click", function () { if (v.paused) play(); else v.pause(); });
+        v.addEventListener("play", label); v.addEventListener("pause", label); label();
+      }
     }
     var tc = document.querySelector("[data-timecode]");
     if (tc) {
@@ -150,8 +154,33 @@
     cutB = setTimeout(function () { cut.style.opacity = "0"; cut.style.pointerEvents = "none"; }, 560);
   }
   function scrollToId(id) {
-    var m = { hero: "The Kumar Cut", work: "The Work", experience: "The Record", skills: "The Toolkit", achievements: "Roll Credits", contact: "Final Scene" };
+    // off the home page (e.g. /mlops) the section lives on "/", so go there instead
+    if (!document.getElementById(id)) { window.location.href = "/#" + id; return; }
+    var m = { hero: "The Kumar Cut", work: "The Work", experience: "The Record", skills: "The Toolkit", achievements: "Roll Credits", contact: "Final Scene", top: "MLOps", projects: "The Pipeline", stack: "The Stack", hire: "Final Scene" };
     cutTo(id, m[id] || id);
+  }
+
+  /* ---------- cinematic cut between pages (e.g. home -> /mlops) ---------- */
+  function goPage(href, label) {
+    var cut = document.querySelector("[data-cut]"), lab = document.querySelector("[data-cut-label]"), bar = document.querySelector("[data-cut-bar]");
+    if (!cut) { window.location.href = href; return; }
+    if (lab) lab.textContent = label || "CUT";
+    cut.style.pointerEvents = "all"; cut.style.opacity = "1";
+    if (bar) { bar.style.transition = "none"; bar.style.width = "0"; requestAnimationFrame(function () { bar.style.transition = "width 0.5s linear"; bar.style.width = "100%"; }); }
+    setTimeout(function () { window.location.href = href; }, 420);
+  }
+  function initPageCuts() {
+    document.querySelectorAll("a[data-cut-page]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault(); goPage(a.getAttribute("href"), a.dataset.cutPage);
+      });
+    });
+    // returning with the browser's back button can restore the page with the cut overlay still showing
+    window.addEventListener("pageshow", function (e) {
+      var cut = document.querySelector("[data-cut]");
+      if (e.persisted && cut) { cut.style.opacity = "0"; cut.style.pointerEvents = "none"; }
+    });
   }
 
   /* ---------- COMMS chat (server /api/chat) ---------- */
@@ -215,7 +244,10 @@
 
   /* ---------- SCENE SELECT command palette ---------- */
   function initPalette() {
+    var onMlops = window.location.pathname.indexOf("/mlops") === 0;
     var cmds = [
+      onMlops ? { label: "Back to Portfolio", hint: "page", act: function () { goPage("/", "PORTFOLIO"); } }
+              : { label: "MLOps Projects", hint: "page", act: function () { goPage("/mlops", "MLOPS"); } },
       { label: "Scene 01 · The Work", hint: "jump", act: function () { scrollToId("work"); } },
       { label: "Scene 02 · The Record", hint: "jump", act: function () { scrollToId("experience"); } },
       { label: "Scene 03 · The Toolkit", hint: "jump", act: function () { scrollToId("skills"); } },
